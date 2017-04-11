@@ -15,7 +15,7 @@ void displaySensorDetails(void)
   Serial.print  ("Sensor:       "); Serial.println(accel.name);
   Serial.print  ("Driver Ver:   "); Serial.println(accel.version);
   Serial.print  ("Unique ID:    0x"); Serial.println(accel.sensor_id, HEX);
-  Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay, 4); Serial.println(" s");
+  Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay); Serial.println(" s");
   Serial.print  ("Max Value:    "); Serial.print(accel.max_value, 4); Serial.println(" m/s^2");
   Serial.print  ("Min Value:    "); Serial.print(accel.min_value, 4); Serial.println(" m/s^2");
   Serial.print  ("Resolution:   "); Serial.print(accel.resolution, 8); Serial.println(" m/s^2");
@@ -28,9 +28,9 @@ void displaySensorDetails(void)
   Serial.print  ("Driver Ver:   "); Serial.println(mag.version);
   Serial.print  ("Unique ID:    0x"); Serial.println(mag.sensor_id, HEX);
   Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay); Serial.println(" s");
-  Serial.print  ("Max Value:    "); Serial.print(mag.max_value, 4); Serial.println(" uT");
-  Serial.print  ("Min Value:    "); Serial.print(mag.min_value, 4); Serial.println(" uT");
-  Serial.print  ("Resolution:   "); Serial.print(mag.resolution, 8); Serial.println(" uT");
+  Serial.print  ("Max Value:    "); Serial.print(mag.max_value); Serial.println(" uT");
+  Serial.print  ("Min Value:    "); Serial.print(mag.min_value); Serial.println(" uT");
+  Serial.print  ("Resolution:   "); Serial.print(mag.resolution); Serial.println(" uT");
   Serial.println("------------------------------------");
   Serial.println("");
   delay(500);
@@ -68,16 +68,16 @@ void loop(void)
 
   /* Display the accel results (acceleration is measured in m/s^2) */
   Serial.print("A ");
-  Serial.print("X: "); Serial.print(aevent.acceleration.x); Serial.print("  ");
-  Serial.print("Y: "); Serial.print(aevent.acceleration.y); Serial.print("  ");
-  Serial.print("Z: "); Serial.print(aevent.acceleration.z); Serial.print("  ");
+  Serial.print("X: "); Serial.print(aevent.acceleration.x, 4); Serial.print("  ");
+  Serial.print("Y: "); Serial.print(aevent.acceleration.y, 4); Serial.print("  ");
+  Serial.print("Z: "); Serial.print(aevent.acceleration.z, 4); Serial.print("  ");
   Serial.println("m/s^2");
 
   /* Display the mag results (mag data is in uTesla) */
   Serial.print("M ");
-  Serial.print("X: "); Serial.print(mevent.magnetic.x); Serial.print("  ");
-  Serial.print("Y: "); Serial.print(mevent.magnetic.y); Serial.print("  ");
-  Serial.print("Z: "); Serial.print(mevent.magnetic.z); Serial.print("  ");
+  Serial.print("X: "); Serial.print(mevent.magnetic.x, 1); Serial.print("  ");
+  Serial.print("Y: "); Serial.print(mevent.magnetic.y, 1); Serial.print("  ");
+  Serial.print("Z: "); Serial.print(mevent.magnetic.z, 1); Serial.print("  ");
   Serial.println("uT");
 
   Serial.println("");
