@@ -278,18 +278,19 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
       case (ACCEL_RANGE_2G):
           accelSensor->max_value   = 2.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -1.999F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = 0.000244F * SENSORS_GRAVITY_STANDARD;
       break;
       case (ACCEL_RANGE_4G):
           accelSensor->max_value   = 4.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -3.998F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = 0.000488F * SENSORS_GRAVITY_STANDARD;
       break;
       case (ACCEL_RANGE_8G):
           accelSensor->max_value   = 8.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -7.996F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = 0.000976F * SENSORS_GRAVITY_STANDARD;
       break;
   }
-  accelSensor->resolution  = 0.122F * SENSORS_GRAVITY_STANDARD;
-
 
   strncpy (magSensor->name, "FXOS8700", sizeof(magSensor->name) - 1);
   magSensor->name[sizeof(magSensor->name) - 1] = 0;

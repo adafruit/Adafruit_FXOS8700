@@ -15,10 +15,10 @@ void displaySensorDetails(void)
   Serial.print  ("Sensor:       "); Serial.println(accel.name);
   Serial.print  ("Driver Ver:   "); Serial.println(accel.version);
   Serial.print  ("Unique ID:    0x"); Serial.println(accel.sensor_id, HEX);
-  Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay); Serial.println(" s");
-  Serial.print  ("Max Value:    "); Serial.print(accel.max_value); Serial.println(" m/s^2");
-  Serial.print  ("Min Value:    "); Serial.print(accel.min_value); Serial.println(" m/s^2");
-  Serial.print  ("Resolution:   "); Serial.print(accel.resolution); Serial.println(" m/s^2");
+  Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay, 4); Serial.println(" s");
+  Serial.print  ("Max Value:    "); Serial.print(accel.max_value, 4); Serial.println(" m/s^2");
+  Serial.print  ("Min Value:    "); Serial.print(accel.min_value, 4); Serial.println(" m/s^2");
+  Serial.print  ("Resolution:   "); Serial.print(accel.resolution, 8); Serial.println(" m/s^2");
   Serial.println("------------------------------------");
   Serial.println("");
   Serial.println("------------------------------------");
@@ -28,9 +28,9 @@ void displaySensorDetails(void)
   Serial.print  ("Driver Ver:   "); Serial.println(mag.version);
   Serial.print  ("Unique ID:    0x"); Serial.println(mag.sensor_id, HEX);
   Serial.print  ("Min Delay:    "); Serial.print(accel.min_delay); Serial.println(" s");
-  Serial.print  ("Max Value:    "); Serial.print(mag.max_value); Serial.println(" uT");
-  Serial.print  ("Min Value:    "); Serial.print(mag.min_value); Serial.println(" uT");
-  Serial.print  ("Resolution:   "); Serial.print(mag.resolution); Serial.println(" uT");
+  Serial.print  ("Max Value:    "); Serial.print(mag.max_value, 4); Serial.println(" uT");
+  Serial.print  ("Min Value:    "); Serial.print(mag.min_value, 4); Serial.println(" uT");
+  Serial.print  ("Resolution:   "); Serial.print(mag.resolution, 8); Serial.println(" uT");
   Serial.println("------------------------------------");
   Serial.println("");
   delay(500);
