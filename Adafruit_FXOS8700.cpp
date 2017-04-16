@@ -67,7 +67,6 @@ byte Adafruit_FXOS8700::read8(byte reg)
   #endif
   if (Wire.endTransmission(false) != 0) return 0;
   Wire.requestFrom((byte)FXOS8700_ADDRESS, (byte)1);
-  while (!Wire.available()); // Wait for data to arrive.
   #if ARDUINO >= 100
     value = Wire.read();
   #else
