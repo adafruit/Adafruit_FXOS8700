@@ -25,7 +25,9 @@
 
 #include "Adafruit_FXOS8700.h"
 
-#define ACCEL_MG_LSB    (0.000122)
+#define ACCEL_MG_LSB_2G (0.000244F)
+#define ACCEL_MG_LSB_4G (0.000488F)
+#define ACCEL_MG_LSB_8G (0.000976F)
 #define MAG_UT_LSB      (0.1F)
 
 /***************************************************************************
@@ -227,9 +229,10 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
   magEvent->timestamp = accelEvent->timestamp;
 
   /* Shift values to create properly formed integers */
-  accelEvent->acceleration.x = (int16_t)((axhi << 8) | axlo);
-  accelEvent->acceleration.y = (int16_t)((ayhi << 8) | aylo);
-  accelEvent->acceleration.z = (int16_t)((azhi << 8) | azlo);
+  /* Note, accel data is 14-bit and left-aligned, so we shift two bit right */
+  accelEvent->acceleration.x = (int16_t)((axhi << 8) | axlo) >> 2;
+  accelEvent->acceleration.y = (int16_t)((ayhi << 8) | aylo) >> 2;
+  accelEvent->acceleration.z = (int16_t)((azhi << 8) | azlo) >> 2;
   magEvent->magnetic.x = (int16_t)((mxhi << 8) | mxlo);
   magEvent->magnetic.y = (int16_t)((myhi << 8) | mylo);
   magEvent->magnetic.z = (int16_t)((mzhi << 8) | mzlo);
@@ -243,9 +246,24 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
   mag_raw.z = magEvent->magnetic.z;
 
   /* Convert accel values to m/s^2 */
-  accelEvent->acceleration.x *= ACCEL_MG_LSB * SENSORS_GRAVITY_STANDARD;
-  accelEvent->acceleration.y *= ACCEL_MG_LSB * SENSORS_GRAVITY_STANDARD;
-  accelEvent->acceleration.z *= ACCEL_MG_LSB * SENSORS_GRAVITY_STANDARD;
+  switch (_range) {
+      case (ACCEL_RANGE_2G):
+          accelEvent->acceleration.x *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.y *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.z *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+      break;
+      case (ACCEL_RANGE_4G):
+          accelEvent->acceleration.x *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.y *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.z *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+      break;
+      case (ACCEL_RANGE_8G):
+          accelEvent->acceleration.x *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.y *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+          accelEvent->acceleration.z *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+      break;
+  }
+
 
   /* Convert mag values to uTesla */
   magEvent->magnetic.x *= MAG_UT_LSB;
@@ -277,17 +295,17 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
       case (ACCEL_RANGE_2G):
           accelSensor->max_value   = 2.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -1.999F * SENSORS_GRAVITY_STANDARD;
-          accelSensor->resolution  = 0.000244F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
       break;
       case (ACCEL_RANGE_4G):
           accelSensor->max_value   = 4.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -3.998F * SENSORS_GRAVITY_STANDARD;
-          accelSensor->resolution  = 0.000488F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
       break;
       case (ACCEL_RANGE_8G):
           accelSensor->max_value   = 8.0F * SENSORS_GRAVITY_STANDARD;
           accelSensor->min_value   = -7.996F * SENSORS_GRAVITY_STANDARD;
-          accelSensor->resolution  = 0.000976F * SENSORS_GRAVITY_STANDARD;
+          accelSensor->resolution  = ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
       break;
   }
 
