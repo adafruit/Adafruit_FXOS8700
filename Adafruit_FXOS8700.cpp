@@ -337,3 +337,24 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor)
 
     return getSensor(accelSensor, &mag);
 }
+
+
+/**************************************************************************/
+/*!
+    @brief  Puts devince into/out of standby mode
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::standby         ( boolean standby ) {
+
+  uint8_t reg1 = read8(FXOS8700_REGISTER_CTRL_REG1);
+  if (standby) {
+    reg1 &= ~(0x01);
+  } else {
+    reg1 |= (0x01);
+  }
+  write8(FXOS8700_REGISTER_CTRL_REG1, reg1);
+
+  if (! standby) {
+    delay(100);
+  }
+}

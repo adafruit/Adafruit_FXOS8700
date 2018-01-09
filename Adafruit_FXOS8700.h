@@ -97,6 +97,7 @@ class Adafruit_FXOS8700 : public Adafruit_Sensor
     void getSensor       ( sensor_t* accel );
     bool getEvent        ( sensors_event_t* accel, sensors_event_t* mag );
     void getSensor       ( sensor_t* accel, sensor_t* mag );
+    void standby         ( boolean standby );
 
     fxos8700RawData_t accel_raw; /* Raw values from last sensor read */
     fxos8700RawData_t mag_raw;   /* Raw values from last sensor read */
