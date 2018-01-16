@@ -45,6 +45,8 @@
 /**************************************************************************/
 /*!
     @brief  Abstract away platform differences in the Arduino wire library
+    @param reg The register address to write to
+    @param value The value to write to the specified register
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::write8(byte reg, byte value)
@@ -63,6 +65,7 @@ void Adafruit_FXOS8700::write8(byte reg, byte value)
 /**************************************************************************/
 /*!
     @brief  Abstract away platform differences in the Arduino wire library
+    @param reg The register address to read from
 */
 /**************************************************************************/
 byte Adafruit_FXOS8700::read8(byte reg)
@@ -90,12 +93,15 @@ byte Adafruit_FXOS8700::read8(byte reg)
  CONSTRUCTOR
  ***************************************************************************/
 
-/**************************************************************************/
-/*!
-    @brief  Instantiates a new Adafruit_FXOS8700 class, including assigning
-            a unique ID to the accel and magnetometer for logging purposes.
-*/
-/**************************************************************************/
+ /**************************************************************************/
+ /*!
+     @brief  Instantiates a new Adafruit_FXOS8700 class, including assigning
+             a unique ID to the accel and magnetometer for logging purposes.
+
+     @param accelSensorID The unique ID to associate with the accelerometer.
+     @param magSensorID The unique ID to associate with the magnetometer.
+ */
+ /**************************************************************************/
 Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
 {
   _accelSensorID = accelSensorID;
@@ -106,12 +112,17 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
  PUBLIC FUNCTIONS
  ***************************************************************************/
 
-/**************************************************************************/
-/*!
-    @brief  Initializes the hardware, including setting the accelerometer
-            range based on ::fxos8700AccelRange_t
-*/
-/**************************************************************************/
+ /**************************************************************************/
+ /*!
+     @brief  Initializes the hardware, including setting the accelerometer
+             range based on fxos8700AccelRange_t
+
+     @param  rng
+             The range to set for the accelerometer, based on fxos8700AccelRange_t
+
+     @return True if the device was successfully initialized, otherwise false.
+ */
+ /**************************************************************************/
 bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
 {
   /* Enable I2C */
@@ -168,6 +179,15 @@ bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
 /**************************************************************************/
 /*!
     @brief  Gets the most recent sensor event
+
+    @param    accelEvent
+              A reference to the sensors_event_t instances where the
+              accelerometer data should be written.
+    @param    magEvent
+              A reference to the sensors_event_t instances where the
+              magnetometer data should be written.
+
+    @return True if the event read was successful, otherwise false.
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* magEvent)
@@ -286,6 +306,13 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
 /**************************************************************************/
 /*!
     @brief  Gets sensor_t data for both the accel and mag in one operation.
+
+    @param    accelSensor
+              A reference to the sensor_t instances where the
+              accelerometer sensor info should be written.
+    @param    magSensor
+              A reference to the sensor_t instances where the
+              magnetometer sensor info should be written.
 */
 /**************************************************************************/
 void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
@@ -334,6 +361,12 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
 /*!
     @brief  To keep Adafruit_Sensor happy we need a single sensor interface.
             When only one sensor is requested, return accel data.
+
+    @param    accelEvent
+              A reference to the sensors_event_t instances where the
+              accelerometer data should be written.
+
+    @return True if the event read was successful, otherwise false.
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent)
@@ -347,6 +380,10 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent)
 /*!
     @brief To keep Adafruit_Sensor happy we need a single sensor interface.
            When only one sensor is requested, return accel data.
+
+    @param   accelSensor
+             A reference to the sensor_t instances where the
+             accelerometer sensor info should be written.
 */
 /**************************************************************************/
 void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor)
@@ -360,6 +397,8 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor)
 /**************************************************************************/
 /*!
     @brief  Puts device into/out of standby mode
+
+    @param standby Set this to a non-zero value to enter standy mode.
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::standby(boolean standby)
