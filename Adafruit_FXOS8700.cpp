@@ -36,7 +36,7 @@
 
 /**************************************************************************/
 /*!
-    @brief  Abstract away platform differences in Arduino wire library
+    @brief  Abstract away platform differences in the Arduino wire library
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::write8(byte reg, byte value)
@@ -54,7 +54,7 @@ void Adafruit_FXOS8700::write8(byte reg, byte value)
 
 /**************************************************************************/
 /*!
-    @brief  Abstract away platform differences in Arduino wire library
+    @brief  Abstract away platform differences in the Arduino wire library
 */
 /**************************************************************************/
 byte Adafruit_FXOS8700::read8(byte reg)
@@ -84,7 +84,8 @@ byte Adafruit_FXOS8700::read8(byte reg)
 
 /**************************************************************************/
 /*!
-    @brief  Instantiates a new Adafruit_FXOS8700 class
+    @brief  Instantiates a new Adafruit_FXOS8700 class, including assigning
+            a unique ID to the accel and magnetometer for logging purposes.
 */
 /**************************************************************************/
 Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
@@ -99,7 +100,8 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
 
 /**************************************************************************/
 /*!
-    @brief  Setups the HW
+    @brief  Initializes the hardware, including setting the accelerometer
+            range based on ::fxos8700AccelRange_t
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
@@ -275,7 +277,7 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
 
 /**************************************************************************/
 /*!
-    @brief  Gets the sensor_t data
+    @brief  Gets sensor_t data for both the accel and mag in one operation.
 */
 /**************************************************************************/
 void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
@@ -320,32 +322,40 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
   magSensor->resolution  = 0.1F;
 }
 
-/* To keep Adafruit_Sensor happy we need a single sensor interface */
-/* When only one sensor is requested, return accel data */
+/**************************************************************************/
+/*!
+    @brief  To keep Adafruit_Sensor happy we need a single sensor interface.
+            When only one sensor is requested, return accel data.
+*/
+/**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent)
 {
-    sensors_event_t mag;
+    sensors_event_t accel;
 
-    return getEvent(accelEvent, &mag);
+    return getEvent(accelEvent, &accel);
 }
 
-/* To keep Adafruit_Sensor happy we need a single sensor interface */
-/* When only one sensor is requested, return accel data */
+/**************************************************************************/
+/*!
+    @brief To keep Adafruit_Sensor happy we need a single sensor interface.
+           When only one sensor is requested, return accel data.
+*/
+/**************************************************************************/
 void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor)
 {
-    sensor_t mag;
+    sensor_t accel;
 
-    return getSensor(accelSensor, &mag);
+    return getSensor(accelSensor, &accel);
 }
 
 
 /**************************************************************************/
 /*!
-    @brief  Puts devince into/out of standby mode
+    @brief  Puts device into/out of standby mode
 */
 /**************************************************************************/
-void Adafruit_FXOS8700::standby         ( boolean standby ) {
-
+void Adafruit_FXOS8700::standby(boolean standby)
+{
   uint8_t reg1 = read8(FXOS8700_REGISTER_CTRL_REG1);
   if (standby) {
     reg1 &= ~(0x01);
