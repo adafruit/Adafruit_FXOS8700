@@ -1,6 +1,9 @@
-/*! \mainpage Adafruit FXOS8700 accel/mag sensor driver
+/*!
+ * @file Adafruit_FXOS8700.cpp
  *
- * \section intro_sec Introduction
+ * @mainpage Adafruit FXOS8700 accel/mag sensor driver
+ *
+ * @section intro_sec Introduction
  *
  * This is the documentation for Adafruit's FXOS8700 driver for the
  * Arduino platform.  It is designed specifically to work with the
@@ -13,11 +16,17 @@
  * please support Adafruit and open-source hardware by purchasing
  * products from Adafruit!
  *
- * \section author Author
+ * @section dependencies Dependencies
+ *
+ * This library depends on <a href="https://github.com/adafruit/Adafruit_Sensor">
+ * Adafruit_Sensor</a> being present on your system. Please make sure you have
+ * installed the latest version before using this library.
+ *
+ * @section author Author
  *
  * Written by Kevin "KTOWN" Townsend for Adafruit Industries.
  *
- * \section license License
+ * @section license License
  *
  * BSD license, all text here must be included in any redistribution.
  *
@@ -33,9 +42,13 @@
 
 #include "Adafruit_FXOS8700.h"
 
+/** Macro for mg per LSB at +/- 2g sensitivity (1 LSB = 0.000244mg) */
 #define ACCEL_MG_LSB_2G (0.000244F)
+/** Macro for mg per LSB at +/- 4g sensitivity (1 LSB = 0.000488mg) */
 #define ACCEL_MG_LSB_4G (0.000488F)
+/** Macro for mg per LSB at +/- 8g sensitivity (1 LSB = 0.000976mg) */
 #define ACCEL_MG_LSB_8G (0.000976F)
+/** Macro for micro tesla (uT) per LSB (1 LSB = 0.1uT) */
 #define MAG_UT_LSB      (0.1F)
 
 /***************************************************************************
@@ -100,6 +113,21 @@ byte Adafruit_FXOS8700::read8(byte reg)
 
      @param accelSensorID The unique ID to associate with the accelerometer.
      @param magSensorID The unique ID to associate with the magnetometer.
+
+     @section example_constructor Example
+
+     The following snippet shows how you might declare and instantiate a
+     new instance of the Adafruit_FXOS8700 class, including a list of the
+     header files you need to reference to use this class:
+
+     @code
+     #include <Wire.h>
+     #include <Adafruit_Sensor.h>
+     #include <Adafruit_FXOS8700.h>
+
+     // Assign a unique ID to this sensor at the same time
+     Adafruit_FXOS8700 accelmag = Adafruit_FXOS8700(0x8700A, 0x8700B);
+     @endcode
  */
  /**************************************************************************/
 Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
@@ -121,6 +149,34 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
              The range to set for the accelerometer, based on fxos8700AccelRange_t
 
      @return True if the device was successfully initialized, otherwise false.
+
+     @section example_begin Example
+
+     The snippet below shows how you might call the .begin function to
+     initialize hardware, including making sure that the initialization
+     process was successful:
+
+     @code
+     void setup(void)
+     {
+       Serial.begin(9600);
+
+       // Wait for the Serial Monitor
+       while (!Serial) {
+         delay(1);
+       }
+
+       Serial.println("FXOS8700 Test"); Serial.println("");
+
+       // Initialise the sensor
+       if(!accelmag.begin(ACCEL_RANGE_4G))
+       {
+         // There was a problem detecting the FXOS8700 ... check your connections
+         Serial.println("Ooops, no FXOS8700 detected ... Check your wiring!");
+         while(1);
+       }
+     }
+     @endcode
  */
  /**************************************************************************/
 bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
@@ -178,7 +234,13 @@ bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
 
 /**************************************************************************/
 /*!
-    @brief  Gets the most recent sensor event
+    @brief  Gets the most recent sensor events.
+
+            This function reads from both the accelerometer and the
+            magnetometer in one call, and is a deviation from the standard
+            Adafruit_Sensor API, but is provided as a convenience since most
+            AHRS algorithms require sensor samples to be as close in time as
+            possible.
 
     @param    accelEvent
               A reference to the sensors_event_t instances where the
@@ -188,6 +250,40 @@ bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
               magnetometer data should be written.
 
     @return True if the event read was successful, otherwise false.
+
+    @section example_getevent Example
+
+    The following loop implementation shows how you can use the .getEvent
+    function to continuously read data from the sensor, and display it on the
+    Serial Monitor:
+
+    @code
+    void loop(void)
+    {
+      sensors_event_t aevent, mevent;
+
+      // Get a new sensor event from the accelerometer and magnetometer
+      accelmag.getEvent(&aevent, &mevent);
+
+      // Display the accel results (acceleration is measured in m/s^2)
+      Serial.print("A ");
+      Serial.print("X: "); Serial.print(aevent.acceleration.x, 4); Serial.print("  ");
+      Serial.print("Y: "); Serial.print(aevent.acceleration.y, 4); Serial.print("  ");
+      Serial.print("Z: "); Serial.print(aevent.acceleration.z, 4); Serial.print("  ");
+      Serial.println("m/s^2");
+
+      // Display the mag results (mag data is in uTesla)
+      Serial.print("M ");
+      Serial.print("X: "); Serial.print(mevent.magnetic.x, 1); Serial.print("  ");
+      Serial.print("Y: "); Serial.print(mevent.magnetic.y, 1); Serial.print("  ");
+      Serial.print("Z: "); Serial.print(mevent.magnetic.z, 1); Serial.print("  ");
+      Serial.println("uT");
+
+      Serial.println("");
+
+      delay(500);
+    }
+    @endcode
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* magEvent)
@@ -359,8 +455,14 @@ void  Adafruit_FXOS8700::getSensor(sensor_t* accelSensor, sensor_t* magSensor)
 
 /**************************************************************************/
 /*!
-    @brief  To keep Adafruit_Sensor happy we need a single sensor interface.
-            When only one sensor is requested, return accel data.
+    @brief    Reads a single sensor event from the accelerometer.
+
+    @attention
+
+    This function exists to keep Adafruit_Sensor happy since we
+    need a single sensor in the canonical .getEvent call. The
+    non-standard .getEvent call with two parameters should
+    generally be used with this sensor.
 
     @param    accelEvent
               A reference to the sensors_event_t instances where the
@@ -378,8 +480,14 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent)
 
 /**************************************************************************/
 /*!
-    @brief To keep Adafruit_Sensor happy we need a single sensor interface.
-           When only one sensor is requested, return accel data.
+    @brief   Gets sensor details about the accelerometer.
+
+    @attention
+
+    This function exists to keep Adafruit_Sensor happy since we
+    need a single sensor in the canonical .getSensor call. The
+    non-standard .getSensor call with two parameters should
+    generally be used with this sensor.
 
     @param   accelSensor
              A reference to the sensor_t instances where the
