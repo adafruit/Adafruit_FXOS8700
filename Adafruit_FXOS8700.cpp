@@ -28,7 +28,7 @@
  *
  * @section license License
  *
- * BSD license, all text here must be included in any redistribution.
+ * MIT license, all text here must be included in any redistribution.
  *
  */
 #if ARDUINO >= 100

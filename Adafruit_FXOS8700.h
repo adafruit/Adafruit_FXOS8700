@@ -14,7 +14,7 @@
  *
  * Written by Kevin "KTOWN" Townsend for Adafruit Industries.
  *
- * BSD license, all text here must be included in any redistribution.
+ * MIT license, all text here must be included in any redistribution.
  *
  */
 /** \file Adafruit_FXOS8700.h */
