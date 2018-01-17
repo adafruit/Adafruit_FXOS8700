@@ -15,7 +15,7 @@ Driver for the [Adafruit FXOS8700 Accelerometer/Magnetometer Breakout](https://w
 
 - [Adafruit Learning Guide](https://learn.adafruit.com/nxp-precision-9dof-breakout/overview)
   (datasheet, schematics, installation details, etc.)
-- [DOxygen Documentation](ToDo) (automatically generated from source)
+- [DOxygen Documentation](https://adafruit.github.io/Adafruit_FXOS8700/) (automatically generated from source)
 - [Adafruit Precision NXP 9-DoF Breakout Board](https://www.adafruit.com/product/3463)
 
 > The DOxygen documentation is automatically generated from the source files
