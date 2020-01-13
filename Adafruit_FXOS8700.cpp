@@ -256,6 +256,7 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
     uint8_t mzlo = Wire.receive();
   #endif
 
+  uint32_t const timestamp = millis();
 
   if (accelEvent) {
     /* Clear the event */
@@ -272,7 +273,7 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
     accelEvent->type      = SENSOR_TYPE_ACCELEROMETER;
 
     /* Set the timestamps */
-    accelEvent->timestamp = millis();
+    accelEvent->timestamp = timestamp;
     
     /* Shift values to create properly formed integers */
     /* Note, accel data is 14-bit and left-aligned, so we shift two bit right */
@@ -317,7 +318,7 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
     magEvent->sensor_id = _magSensorID;
     magEvent->type      = SENSOR_TYPE_MAGNETIC_FIELD;
 
-    magEvent->timestamp = accelEvent->timestamp;
+    magEvent->timestamp = timestamp;
 
     magEvent->magnetic.x = (int16_t)((mxhi << 8) | mxlo);
     magEvent->magnetic.y = (int16_t)((myhi << 8) | mylo);
