@@ -84,8 +84,47 @@
       int16_t x;
       int16_t y;
       int16_t z;
-    } fxos8700RawData_t;
+    } fxos8700RawData_t; 
 /*=========================================================================*/
+
+class Adafruit_FXOS8700;
+
+/** Adafruit Unified Sensor interface for accelerometer component of FXOS8700 */
+class Adafruit_FXOS8700_Accelerometer : public Adafruit_Sensor {
+public:
+  /** @brief Create an Adafruit_Sensor compatible object for the accelerometer
+     sensor
+      @param parent A pointer to the FXOS8700 class */
+  Adafruit_FXOS8700_Accelerometer(Adafruit_FXOS8700 *parent) {
+    _theFXOS8700 = parent;
+  }
+  bool getEvent(sensors_event_t *);
+  void getSensor(sensor_t *);
+
+private:
+  int _sensorID = 8701;
+  Adafruit_FXOS8700 *_theFXOS8700 = NULL;
+};
+
+
+/** Adafruit Unified Sensor interface for magnetometer component of FXOS8700 */
+class Adafruit_FXOS8700_Magnetometer : public Adafruit_Sensor {
+public:
+  /** @brief Create an Adafruit_Sensor compatible object for the magnetometer
+     sensor
+      @param parent A pointer to the FXOS8700 class */
+  Adafruit_FXOS8700_Magnetometer(Adafruit_FXOS8700 *parent) {
+    _theFXOS8700 = parent;
+  }
+  bool getEvent(sensors_event_t *);
+  void getSensor(sensor_t *);
+
+private:
+  int _sensorID = 8702;
+  Adafruit_FXOS8700 *_theFXOS8700 = NULL;
+};
+
+
 
 class Adafruit_FXOS8700 : public Adafruit_Sensor
 {
@@ -102,6 +141,12 @@ class Adafruit_FXOS8700 : public Adafruit_Sensor
     fxos8700RawData_t accel_raw; /* Raw values from last sensor read */
     fxos8700RawData_t mag_raw;   /* Raw values from last sensor read */
 
+    Adafruit_Sensor *getMagnetometerSensor(void);
+    Adafruit_Sensor *getAccelerometerSensor(void);
+
+    Adafruit_FXOS8700_Accelerometer *accel_sensor =  NULL; ///< Accelerometer data object
+    Adafruit_FXOS8700_Magnetometer *mag_sensor = NULL; ///< Mag data object
+	
   private:
     void        write8  ( byte reg, byte value );
     byte        read8   ( byte reg );

@@ -91,6 +91,9 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID)
 {
   _accelSensorID = accelSensorID;
   _magSensorID = magSensorID;
+
+  accel_sensor = new Adafruit_FXOS8700_Accelerometer(this);
+  mag_sensor = new Adafruit_FXOS8700_Magnetometer(this);
 }
 
 /***************************************************************************
@@ -162,26 +165,6 @@ bool Adafruit_FXOS8700::begin(fxos8700AccelRange_t rng)
 /**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* magEvent)
 {
-  /* Clear the event */
-  memset(accelEvent, 0, sizeof(sensors_event_t));
-  memset(magEvent, 0, sizeof(sensors_event_t));
-
-  /* Clear the raw data placeholder */
-  accel_raw.x = 0;
-  accel_raw.y = 0;
-  accel_raw.z = 0;
-  mag_raw.x = 0;
-  mag_raw.y = 0;
-  mag_raw.z = 0;
-
-  /* Set the static metadata */
-  accelEvent->version   = sizeof(sensors_event_t);
-  accelEvent->sensor_id = _accelSensorID;
-  accelEvent->type      = SENSOR_TYPE_ACCELEROMETER;
-
-  magEvent->version   = sizeof(sensors_event_t);
-  magEvent->sensor_id = _magSensorID;
-  magEvent->type      = SENSOR_TYPE_MAGNETIC_FIELD;
 
   /* Read 13 bytes from the sensor */
   Wire.beginTransmission((byte)FXOS8700_ADDRESS);
@@ -224,51 +207,82 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t* accelEvent, sensors_event_t* m
     uint8_t mzlo = Wire.receive();
   #endif
 
-  /* Set the timestamps */
-  accelEvent->timestamp = millis();
-  magEvent->timestamp = accelEvent->timestamp;
 
-  /* Shift values to create properly formed integers */
-  /* Note, accel data is 14-bit and left-aligned, so we shift two bit right */
-  accelEvent->acceleration.x = (int16_t)((axhi << 8) | axlo) >> 2;
-  accelEvent->acceleration.y = (int16_t)((ayhi << 8) | aylo) >> 2;
-  accelEvent->acceleration.z = (int16_t)((azhi << 8) | azlo) >> 2;
-  magEvent->magnetic.x = (int16_t)((mxhi << 8) | mxlo);
-  magEvent->magnetic.y = (int16_t)((myhi << 8) | mylo);
-  magEvent->magnetic.z = (int16_t)((mzhi << 8) | mzlo);
+  if (accelEvent) {
+    /* Clear the event */
+    memset(accelEvent, 0, sizeof(sensors_event_t));
+    
+    /* Clear the raw data placeholder */
+    accel_raw.x = 0;
+    accel_raw.y = 0;
+    accel_raw.z = 0;
 
-  /* Assign raw values in case someone needs them */
-  accel_raw.x = accelEvent->acceleration.x;
-  accel_raw.y = accelEvent->acceleration.y;
-  accel_raw.z = accelEvent->acceleration.z;
-  mag_raw.x = magEvent->magnetic.x;
-  mag_raw.y = magEvent->magnetic.y;
-  mag_raw.z = magEvent->magnetic.z;
+    /* Set the static metadata */
+    accelEvent->version   = sizeof(sensors_event_t);
+    accelEvent->sensor_id = _accelSensorID;
+    accelEvent->type      = SENSOR_TYPE_ACCELEROMETER;
 
-  /* Convert accel values to m/s^2 */
-  switch (_range) {
-      case (ACCEL_RANGE_2G):
-          accelEvent->acceleration.x *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.y *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.z *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+    /* Set the timestamps */
+    accelEvent->timestamp = millis();
+    
+    /* Shift values to create properly formed integers */
+    /* Note, accel data is 14-bit and left-aligned, so we shift two bit right */
+    accelEvent->acceleration.x = (int16_t)((axhi << 8) | axlo) >> 2;
+    accelEvent->acceleration.y = (int16_t)((ayhi << 8) | aylo) >> 2;
+    accelEvent->acceleration.z = (int16_t)((azhi << 8) | azlo) >> 2;
+    
+    /* Assign raw values in case someone needs them */
+    accel_raw.x = accelEvent->acceleration.x;
+    accel_raw.y = accelEvent->acceleration.y;
+    accel_raw.z = accelEvent->acceleration.z;
+
+    /* Convert accel values to m/s^2 */
+    switch (_range) {
+    case (ACCEL_RANGE_2G):
+      accelEvent->acceleration.x *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.y *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.z *= ACCEL_MG_LSB_2G * SENSORS_GRAVITY_STANDARD;
       break;
-      case (ACCEL_RANGE_4G):
-          accelEvent->acceleration.x *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.y *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.z *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+    case (ACCEL_RANGE_4G):
+      accelEvent->acceleration.x *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.y *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.z *= ACCEL_MG_LSB_4G * SENSORS_GRAVITY_STANDARD;
       break;
-      case (ACCEL_RANGE_8G):
-          accelEvent->acceleration.x *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.y *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
-          accelEvent->acceleration.z *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+    case (ACCEL_RANGE_8G):
+      accelEvent->acceleration.x *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.y *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
+      accelEvent->acceleration.z *= ACCEL_MG_LSB_8G * SENSORS_GRAVITY_STANDARD;
       break;
+    }
+
   }
 
+  if (magEvent) {
+    memset(magEvent, 0, sizeof(sensors_event_t));
 
-  /* Convert mag values to uTesla */
-  magEvent->magnetic.x *= MAG_UT_LSB;
-  magEvent->magnetic.y *= MAG_UT_LSB;
-  magEvent->magnetic.z *= MAG_UT_LSB;
+    mag_raw.x = 0;
+    mag_raw.y = 0;
+    mag_raw.z = 0;
+
+    magEvent->version   = sizeof(sensors_event_t);
+    magEvent->sensor_id = _magSensorID;
+    magEvent->type      = SENSOR_TYPE_MAGNETIC_FIELD;
+
+    magEvent->timestamp = accelEvent->timestamp;
+
+    magEvent->magnetic.x = (int16_t)((mxhi << 8) | mxlo);
+    magEvent->magnetic.y = (int16_t)((myhi << 8) | mylo);
+    magEvent->magnetic.z = (int16_t)((mzhi << 8) | mzlo);
+
+    mag_raw.x = magEvent->magnetic.x;
+    mag_raw.y = magEvent->magnetic.y;
+    mag_raw.z = magEvent->magnetic.z;
+
+    /* Convert mag values to uTesla */
+    magEvent->magnetic.x *= MAG_UT_LSB;
+    magEvent->magnetic.y *= MAG_UT_LSB;
+    magEvent->magnetic.z *= MAG_UT_LSB;    
+  }
 
   return true;
 }
@@ -357,4 +371,84 @@ void Adafruit_FXOS8700::standby         ( boolean standby ) {
   if (! standby) {
     delay(100);
   }
+}
+
+
+/*!
+    @brief  Gets an Adafruit Unified Sensor object for the accelerometer
+    sensor component
+    @return Adafruit_Sensor pointer to accelerometer sensor
+ */
+Adafruit_Sensor *Adafruit_FXOS8700::getAccelerometerSensor(void) {
+  return accel_sensor;
+}
+
+/*!
+    @brief  Gets an Adafruit Unified Sensor object for the mag sensor component
+    @return Adafruit_Sensor pointer to mag sensor
+ */
+Adafruit_Sensor *Adafruit_FXOS8700::getMagnetometerSensor(void) { return mag_sensor; }
+
+/**************************************************************************/
+/*!
+    @brief  Gets the sensor_t data for the FXOS8700's magnetic sensor
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700_Magnetometer::getSensor(sensor_t *sensor) {
+  /* Clear the sensor_t object */
+  memset(sensor, 0, sizeof(sensor_t));
+
+  /* Insert the sensor name in the fixed length char array */
+  strncpy(sensor->name, "FXOS8700_M", sizeof(sensor->name) - 1);
+  sensor->name[sizeof(sensor->name) - 1] = 0;
+  sensor->version = 1;
+  sensor->sensor_id = _sensorID;
+  sensor->type = SENSOR_TYPE_MAGNETIC_FIELD;
+  sensor->min_delay = 0;
+  sensor->min_value = -1200;
+  sensor->max_value = +1200;
+  sensor->resolution = 0;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Gets the magnetometer as a standard sensor event
+    @param  event Sensor event object that will be populated
+    @returns True
+*/
+/**************************************************************************/
+bool Adafruit_FXOS8700_Magnetometer::getEvent(sensors_event_t *event) {
+  return _theFXOS8700->getEvent(NULL, event);
+}
+
+/**************************************************************************/
+/*!
+    @brief  Gets the sensor_t data for the FXOS8700's accelerometer
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700_Accelerometer::getSensor(sensor_t *sensor) {
+  /* Clear the sensor_t object */
+  memset(sensor, 0, sizeof(sensor_t));
+
+  /* Insert the sensor name in the fixed length char array */
+  strncpy(sensor->name, "FXOS8700_A", sizeof(sensor->name) - 1);
+  sensor->name[sizeof(sensor->name) - 1] = 0;
+  sensor->version = 1;
+  sensor->sensor_id = _sensorID;
+  sensor->type = SENSOR_TYPE_ACCELEROMETER;
+  sensor->min_delay = 0;
+  sensor->min_value = -78.4532F; /*  -8g = 78.4532 m/s^2  */
+  sensor->max_value = 78.4532F;  /* 8g = 78.4532 m/s^2  */
+  sensor->resolution = 0.061;     /* 0.061 mg/LSB at +-2g */
+}
+
+/**************************************************************************/
+/*!
+    @brief  Gets the accelerometer as a standard sensor event
+    @param  event Sensor event object that will be populated
+    @returns True
+*/
+/**************************************************************************/
+bool Adafruit_FXOS8700_Accelerometer::getEvent(sensors_event_t *event) {
+  return _theFXOS8700->getEvent(event, NULL);
 }
