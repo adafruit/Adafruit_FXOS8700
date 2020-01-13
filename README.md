@@ -1,4 +1,6 @@
-# Adafruit FXOS8700 Library [![Build Status](https://travis-ci.org/adafruit/Adafruit_FXOS8700.svg?branch=master)](https://travis-ci.org/adafruit/Adafruit_FXOS8700)
+Adafruit_FXOS8700 [![Build Status](https://github.com/adafruit/Adafruit_FXOS8700/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_FXOS8700/actions)
+================
+
 
 Driver for the [Adafruit FXOS8700 Accelerometer/Magnetometer Breakout](https://www.adafruit.com/product/3463)
 
