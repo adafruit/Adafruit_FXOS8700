@@ -1,6 +1,6 @@
 name: Arduino Library CI
 
-on: [pull_request, push]
+on: [pull_request, push, repository_dispatch]
 
 jobs:
   build:
@@ -28,5 +28,5 @@ jobs:
     - name: doxygen
       env:
         GH_REPO_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
-        PRETTYNAME : "Adafruit FXOS8700 Accelerometer/Magnetometer Library"
+        PRETTYNAME : "Adafruit FXOS8700 Accelerometer Magnetometer Library"
       run: bash ci/doxy_gen_and_deploy.sh
