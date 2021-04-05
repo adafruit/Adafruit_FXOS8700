@@ -64,7 +64,7 @@
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::write8(byte reg, byte value) {
-  Wire.beginTransmission(FXOS8700_ADDRESS);
+  Wire.beginTransmission(_sensorAddr);
 #if ARDUINO >= 100
   Wire.write((uint8_t)reg);
   Wire.write((uint8_t)value);
@@ -84,7 +84,7 @@ void Adafruit_FXOS8700::write8(byte reg, byte value) {
 byte Adafruit_FXOS8700::read8(byte reg) {
   byte value;
 
-  Wire.beginTransmission((byte)FXOS8700_ADDRESS);
+  Wire.beginTransmission((byte)_sensorAddr);
 #if ARDUINO >= 100
   Wire.write((uint8_t)reg);
 #else
@@ -92,7 +92,7 @@ byte Adafruit_FXOS8700::read8(byte reg) {
 #endif
   if (Wire.endTransmission(false) != 0)
     return 0;
-  Wire.requestFrom((byte)FXOS8700_ADDRESS, (byte)1);
+  Wire.requestFrom((byte)_sensorAddr, (byte)1);
 #if ARDUINO >= 100
   value = Wire.read();
 #else
@@ -113,12 +113,14 @@ byte Adafruit_FXOS8700::read8(byte reg) {
 
     @param accelSensorID The unique ID to associate with the accelerometer.
     @param magSensorID The unique ID to associate with the magnetometer.
+    @param addr The I2C address of the sensor.
 */
 /**************************************************************************/
-Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID,
-                                     int32_t magSensorID) {
+Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID,
+                                     byte addr) {
   _accelSensorID = accelSensorID;
   _magSensorID = magSensorID;
+  _sensorAddr = addr;
 
   accel_sensor = new Adafruit_FXOS8700_Accelerometer(this);
   mag_sensor = new Adafruit_FXOS8700_Magnetometer(this);
@@ -215,14 +217,14 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t *accelEvent,
                                  sensors_event_t *magEvent) {
 
   /* Read 13 bytes from the sensor */
-  Wire.beginTransmission((byte)FXOS8700_ADDRESS);
+  Wire.beginTransmission((byte)_sensorAddr);
 #if ARDUINO >= 100
   Wire.write(FXOS8700_REGISTER_STATUS | 0x80);
 #else
   Wire.send(FXOS8700_REGISTER_STATUS | 0x80);
 #endif
   Wire.endTransmission();
-  Wire.requestFrom((byte)FXOS8700_ADDRESS, (byte)13);
+  Wire.requestFrom((byte)_sensorAddr, (byte)13);
 
 /* ToDo: Check status first! */
 #if ARDUINO >= 100
