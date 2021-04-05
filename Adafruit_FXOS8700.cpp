@@ -116,8 +116,7 @@ byte Adafruit_FXOS8700::read8(byte reg) {
     @param addr The I2C address of the sensor.
 */
 /**************************************************************************/
-Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID,
-                                     int32_t magSensorID,
+Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID, int32_t magSensorID,
                                      byte addr) {
   _accelSensorID = accelSensorID;
   _magSensorID = magSensorID;
