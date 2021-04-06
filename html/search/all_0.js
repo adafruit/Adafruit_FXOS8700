@@ -8,7 +8,7 @@ var searchData=
   ['accel_5frange_5f8g',['ACCEL_RANGE_8G',['../_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda0a657d8a8f3161e900f5d3812020c0a3',1,'Adafruit_FXOS8700.h']]],
   ['accel_5fraw',['accel_raw',['../class_adafruit___f_x_o_s8700.html#ac23db6260b65aceacb9ffc448db98b00',1,'Adafruit_FXOS8700']]],
   ['accel_5fsensor',['accel_sensor',['../class_adafruit___f_x_o_s8700.html#a1f72085bc356e45e6c981a29fd7533b6',1,'Adafruit_FXOS8700']]],
-  ['adafruit_5ffxos8700',['Adafruit_FXOS8700',['../class_adafruit___f_x_o_s8700.html',1,'Adafruit_FXOS8700'],['../class_adafruit___f_x_o_s8700.html#a4c0facb291b05db22206c7ba0d8002fd',1,'Adafruit_FXOS8700::Adafruit_FXOS8700()']]],
+  ['adafruit_5ffxos8700',['Adafruit_FXOS8700',['../class_adafruit___f_x_o_s8700.html',1,'Adafruit_FXOS8700'],['../class_adafruit___f_x_o_s8700.html#aa596be6ba81988c2b11d1b3e535f554e',1,'Adafruit_FXOS8700::Adafruit_FXOS8700()']]],
   ['adafruit_5ffxos8700_2ecpp',['Adafruit_FXOS8700.cpp',['../_adafruit___f_x_o_s8700_8cpp.html',1,'']]],
   ['adafruit_5ffxos8700_2eh',['Adafruit_FXOS8700.h',['../_adafruit___f_x_o_s8700_8h.html',1,'']]],
   ['adafruit_5ffxos8700_5faccelerometer',['Adafruit_FXOS8700_Accelerometer',['../class_adafruit___f_x_o_s8700___accelerometer.html',1,'Adafruit_FXOS8700_Accelerometer'],['../class_adafruit___f_x_o_s8700___accelerometer.html#a61f3b7d5cbed87bd2748ebc79aed8d21',1,'Adafruit_FXOS8700_Accelerometer::Adafruit_FXOS8700_Accelerometer()']]],

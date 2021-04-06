@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['fxos8700_5faddress',['FXOS8700_ADDRESS',['../_adafruit___f_x_o_s8700_8h.html#a132ba3f848d7ec18a9d065a5f201763c',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fid',['FXOS8700_ID',['../_adafruit___f_x_o_s8700_8h.html#ace9e70bad874c54219b86b8439461cae',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg1',['FXOS8700_REGISTER_CTRL_REG1',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa6f44bce283efb574435a277da634e47a',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg2',['FXOS8700_REGISTER_CTRL_REG2',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caacbc3cc4f72a749f4199dac78c6f3310b',1,'Adafruit_FXOS8700.h']]],
