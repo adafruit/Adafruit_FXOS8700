@@ -1,6 +1,4 @@
 #include <Adafruit_FXOS8700.h>
-#include <Adafruit_Sensor.h>
-#include <Wire.h>
 
 /* Assign a unique ID to this sensor at the same time */
 Adafruit_FXOS8700 accelmag = Adafruit_FXOS8700(0x8700A, 0x8700B);
@@ -69,7 +67,7 @@ void setup(void) {
   Serial.println("");
 
   /* Initialise the sensor */
-  if (!accelmag.begin(ACCEL_RANGE_4G)) {
+  if (!accelmag.begin()) {
     /* There was a problem detecting the FXOS8700 ... check your connections */
     Serial.println("Ooops, no FXOS8700 detected ... Check your wiring!");
     while (1)
