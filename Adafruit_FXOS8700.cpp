@@ -118,6 +118,7 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID,
     @brief  Initializes the hardware.
 
     @param  addr I2C address for the device.
+    @param  wire Pointer to Wire instance
 
     @return True if the device was successfully initialized, otherwise false.
 */
