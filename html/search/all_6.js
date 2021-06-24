@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['x',['../structfxos8700_raw_data__t.html#a98d85383af1281f10dfe09c06b169ad4',1,'fxos8700RawData_t']]]
+  ['standby',['standby',['../class_adafruit___f_x_o_s8700.html#afe8bc78aca330e038331ac0ce6fefe35',1,'Adafruit_FXOS8700']]]
 ];

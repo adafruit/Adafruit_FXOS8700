@@ -61,6 +61,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_adafruit___f_x_o_s8700-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Adafruit_FXOS8700 Class Reference</div>  </div>
@@ -82,12 +83,12 @@ Inheritance diagram for Adafruit_FXOS8700:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa596be6ba81988c2b11d1b3e535f554e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#aa596be6ba81988c2b11d1b3e535f554e">Adafruit_FXOS8700</a> (int32_t accelSensorID=-1, int32_t magSensorID=-1, byte addr=0x1F)</td></tr>
-<tr class="memdesc:aa596be6ba81988c2b11d1b3e535f554e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new <a class="el" href="class_adafruit___f_x_o_s8700.html" title="Unified sensor driver for the Adafruit FXOS8700 breakout. ">Adafruit_FXOS8700</a> class, including assigning a unique ID to the accel and magnetometer for logging purposes.  <a href="#aa596be6ba81988c2b11d1b3e535f554e">More...</a><br /></td></tr>
-<tr class="separator:aa596be6ba81988c2b11d1b3e535f554e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6cf7a2ac0a687910eae3ea1add692db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#ac6cf7a2ac0a687910eae3ea1add692db">begin</a> (<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd">fxos8700AccelRange_t</a> rng=<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda96c51ec3ab7172ca52adc2e52a6e304c">ACCEL_RANGE_2G</a>)</td></tr>
-<tr class="memdesc:ac6cf7a2ac0a687910eae3ea1add692db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the hardware, including setting the accelerometer range based on fxos8700AccelRange_t.  <a href="#ac6cf7a2ac0a687910eae3ea1add692db">More...</a><br /></td></tr>
-<tr class="separator:ac6cf7a2ac0a687910eae3ea1add692db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c0facb291b05db22206c7ba0d8002fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a4c0facb291b05db22206c7ba0d8002fd">Adafruit_FXOS8700</a> (int32_t accelSensorID=-1, int32_t magSensorID=-1)</td></tr>
+<tr class="memdesc:a4c0facb291b05db22206c7ba0d8002fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new <a class="el" href="class_adafruit___f_x_o_s8700.html" title="Unified sensor driver for the Adafruit FXOS8700 breakout. ">Adafruit_FXOS8700</a> class, including assigning a unique ID to the accel and magnetometer for logging purposes.  <a href="#a4c0facb291b05db22206c7ba0d8002fd">More...</a><br /></td></tr>
+<tr class="separator:a4c0facb291b05db22206c7ba0d8002fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8030a9875f8c3ff5ebb6d71f1903dc68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a8030a9875f8c3ff5ebb6d71f1903dc68">begin</a> (uint8_t addr=0x1F, TwoWire *wire=&amp;Wire)</td></tr>
+<tr class="memdesc:a8030a9875f8c3ff5ebb6d71f1903dc68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the hardware.  <a href="#a8030a9875f8c3ff5ebb6d71f1903dc68">More...</a><br /></td></tr>
+<tr class="separator:a8030a9875f8c3ff5ebb6d71f1903dc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c6b0a262ea754411282ed248e232f35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a4c6b0a262ea754411282ed248e232f35">getEvent</a> (sensors_event_t *accel)</td></tr>
 <tr class="memdesc:a4c6b0a262ea754411282ed248e232f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single sensor event from the accelerometer.  <a href="#a4c6b0a262ea754411282ed248e232f35">More...</a><br /></td></tr>
 <tr class="separator:a4c6b0a262ea754411282ed248e232f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,12 +124,19 @@ Public Attributes</h2></td></tr>
 <a class="el" href="class_adafruit___f_x_o_s8700___magnetometer.html">Adafruit_FXOS8700_Magnetometer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a10e5b20b853eee33df300d38102d2a86">mag_sensor</a> = NULL</td></tr>
 <tr class="memdesc:a10e5b20b853eee33df300d38102d2a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mag data object. <br /></td></tr>
 <tr class="separator:a10e5b20b853eee33df300d38102d2a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a5e758e5549fefb44e6ea67edaa4cde6a"><td class="memItemLeft" align="right" valign="top"><a id="a5e758e5549fefb44e6ea67edaa4cde6a"></a>
+Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a5e758e5549fefb44e6ea67edaa4cde6a">i2c_dev</a> = NULL</td></tr>
+<tr class="memdesc:a5e758e5549fefb44e6ea67edaa4cde6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to I2C bus interface. <br /></td></tr>
+<tr class="separator:a5e758e5549fefb44e6ea67edaa4cde6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Unified sensor driver for the Adafruit FXOS8700 breakout. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa596be6ba81988c2b11d1b3e535f554e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa596be6ba81988c2b11d1b3e535f554e">&#9670;&nbsp;</a></span>Adafruit_FXOS8700()</h2>
+<a id="a4c0facb291b05db22206c7ba0d8002fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c0facb291b05db22206c7ba0d8002fd">&#9670;&nbsp;</a></span>Adafruit_FXOS8700()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,13 +151,7 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int32_t&#160;</td>
-          <td class="paramname"><em>magSensorID</em> = <code>-1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">byte&#160;</td>
-          <td class="paramname"><em>addr</em> = <code>0x1F</code>&#160;</td>
+          <td class="paramname"><em>magSensorID</em> = <code>-1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,7 +166,6 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">accelSensorID</td><td>The unique ID to associate with the accelerometer. </td></tr>
     <tr><td class="paramname">magSensorID</td><td>The unique ID to associate with the magnetometer. </td></tr>
-    <tr><td class="paramname">addr</td><td>The I2C address of the sensor. </td></tr>
   </table>
   </dd>
 </dl>
@@ -172,8 +173,8 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac6cf7a2ac0a687910eae3ea1add692db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6cf7a2ac0a687910eae3ea1add692db">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="a8030a9875f8c3ff5ebb6d71f1903dc68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8030a9875f8c3ff5ebb6d71f1903dc68">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,17 +182,28 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool Adafruit_FXOS8700::begin </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd">fxos8700AccelRange_t</a>&#160;</td>
-          <td class="paramname"><em>rng</em> = <code><a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda96c51ec3ab7172ca52adc2e52a6e304c">ACCEL_RANGE_2G</a></code></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em> = <code>0x1F</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">TwoWire *&#160;</td>
+          <td class="paramname"><em>wire</em> = <code>&amp;Wire</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the hardware, including setting the accelerometer range based on fxos8700AccelRange_t. </p>
+<p>Initializes the hardware. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">rng</td><td>The range to set for the accelerometer, based on fxos8700AccelRange_t</td></tr>
+    <tr><td class="paramname">addr</td><td>I2C address for the device. </td></tr>
+    <tr><td class="paramname">wire</td><td>Pointer to Wire instance</td></tr>
   </table>
   </dd>
 </dl>
