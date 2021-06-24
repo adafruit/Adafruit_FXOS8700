@@ -21,14 +21,10 @@
 #ifndef __FXOS8700_H__
 #define __FXOS8700_H__
 
-#if (ARDUINO >= 100)
-#include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-
+#include <Adafruit_BusIO_Register.h>
+#include <Adafruit_I2CDevice.h>
 #include <Adafruit_Sensor.h>
-#include <Wire.h>
+#include <Arduino.h>
 
 /*=========================================================================
     I2C ADDRESS/BITS AND SETTINGS
@@ -151,10 +147,9 @@ private:
 /**************************************************************************/
 class Adafruit_FXOS8700 : public Adafruit_Sensor {
 public:
-  Adafruit_FXOS8700(int32_t accelSensorID = -1, int32_t magSensorID = -1,
-                    byte addr = 0x1F);
+  Adafruit_FXOS8700(int32_t accelSensorID = -1, int32_t magSensorID = -1);
+  bool begin(uint8_t addr = 0x1F, TwoWire *wire = &Wire);
 
-  bool begin(fxos8700AccelRange_t rng = ACCEL_RANGE_2G);
   bool getEvent(sensors_event_t *accel);
   void getSensor(sensor_t *accel);
   bool getEvent(sensors_event_t *accel, sensors_event_t *mag);
@@ -173,12 +168,12 @@ public:
       NULL; ///< Accelerometer data object
   Adafruit_FXOS8700_Magnetometer *mag_sensor = NULL; ///< Mag data object
 
-private:
-  void write8(byte reg, byte value);
-  byte read8(byte reg);
+protected:
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
 
+private:
+  bool initialize();
   fxos8700AccelRange_t _range;
-  byte _sensorAddr;
   int32_t _accelSensorID;
   int32_t _magSensorID;
 };
