@@ -74,6 +74,9 @@ void setup(void) {
       ;
   }
 
+  /* Set accelerometer range (optional, default is 2G) */
+  // accelmag.setAccelRange(ACCEL_RANGE_8G);
+
   /* Display some basic information on this sensor */
   displaySensorDetails();
 }
