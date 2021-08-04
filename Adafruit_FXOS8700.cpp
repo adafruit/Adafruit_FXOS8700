@@ -380,6 +380,33 @@ Adafruit_Sensor *Adafruit_FXOS8700::getMagnetometerSensor(void) {
 
 /**************************************************************************/
 /*!
+    @brief  Set the accelerometer full scale range.
+
+    @param range The accelerometer full scale range to set.
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::setAccelRange(fxos8700AccelRange_t range) {
+  Adafruit_BusIO_Register XYZ_DATA_CFG(i2c_dev, FXOS8700_REGISTER_XYZ_DATA_CFG);
+  Adafruit_BusIO_RegisterBits fs_bits(&XYZ_DATA_CFG, 2, 0);
+
+  standby(true);
+  fs_bits.write(range);
+  standby(false);
+
+  _range = range;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Get the accelerometer full scale range.
+
+    @return The accelerometer full scale range.
+*/
+/**************************************************************************/
+fxos8700AccelRange_t Adafruit_FXOS8700::getAccelRange() { return _range; }
+
+/**************************************************************************/
+/*!
     @brief  Gets the sensor_t data for the FXOS8700's magnetic sensor
 */
 /**************************************************************************/

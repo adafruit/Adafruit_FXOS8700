@@ -168,12 +168,15 @@ public:
       NULL; ///< Accelerometer data object
   Adafruit_FXOS8700_Magnetometer *mag_sensor = NULL; ///< Mag data object
 
+  void setAccelRange(fxos8700AccelRange_t range);
+  fxos8700AccelRange_t getAccelRange();
+
 protected:
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
 
 private:
   bool initialize();
-  fxos8700AccelRange_t _range;
+  fxos8700AccelRange_t _range = ACCEL_RANGE_2G;
   int32_t _accelSensorID;
   int32_t _magSensorID;
 };
