@@ -110,6 +110,18 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID,
 }
 
 /***************************************************************************
+ DESTRUCTOR
+ ***************************************************************************/
+Adafruit_FXOS8700::~Adafruit_FXOS8700() {
+  if (i2c_dev)
+    delete i2c_dev;
+  if (accel_sensor)
+    delete accel_sensor;
+  if (mag_sensor)
+    delete mag_sensor;
+}
+
+/***************************************************************************
  PUBLIC FUNCTIONS
  ***************************************************************************/
 
@@ -124,6 +136,8 @@ Adafruit_FXOS8700::Adafruit_FXOS8700(int32_t accelSensorID,
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::begin(uint8_t addr, TwoWire *wire) {
+  if (i2c_dev)
+    delete i2c_dev;
   i2c_dev = new Adafruit_I2CDevice(addr, wire);
   if (!i2c_dev->begin())
     return false;
