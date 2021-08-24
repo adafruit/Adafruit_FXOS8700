@@ -148,6 +148,7 @@ private:
 class Adafruit_FXOS8700 : public Adafruit_Sensor {
 public:
   Adafruit_FXOS8700(int32_t accelSensorID = -1, int32_t magSensorID = -1);
+  ~Adafruit_FXOS8700();
   bool begin(uint8_t addr = 0x1F, TwoWire *wire = &Wire);
 
   bool getEvent(sensors_event_t *accel);
