@@ -77,6 +77,9 @@ void setup(void) {
   /* Set accelerometer range (optional, default is 2G) */
   // accelmag.setAccelRange(ACCEL_RANGE_8G);
 
+  /* Set hybrid (accel & mag) output data rate (optional, default is 100Hz) */
+  // accelmag.setHybridODR(ODR_HYBRID_400HZ);
+
   /* Display some basic information on this sensor */
   displaySensorDetails();
 }

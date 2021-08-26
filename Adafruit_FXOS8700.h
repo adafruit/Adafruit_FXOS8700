@@ -82,6 +82,25 @@ typedef enum {
     OPTIONAL SPEED SETTINGS
     -----------------------------------------------------------------------*/
 /*!
+    Output Data Rate (ODR) settings for the overall FXOS8700 sensor.
+    Maintains lnoise and active bits as 1
+*/
+typedef enum {
+  ODR_HYBRID_400HZ = 0x05,    /**< 400Hz Hybrid mode */
+  ODR_HYBRID_200HZ = 0x0D,    /**< 200Hz Hybrid mode */
+  ODR_HYBRID_100HZ = 0x15,    /**< 100Hz Hybrid mode */
+  ODR_HYBRID_50HZ = 0x1D,     /**< 50Hz Hybrid mode */
+  ODR_HYBRID_25HZ = 0x25,     /**< 25Hz Hybrid mode */
+  ODR_HYBRID_6_25HZ = 0x2D,   /**< 6.25Hz Hybrid mode */
+  ODR_HYBRID_3_125HZ = 0x35,  /**< 3.125Hz Hybrid mode */
+  ODR_HYBRID_0_7813HZ = 0x3D  /**< 0.7813Hz Hybrid mode */
+} fxos8700HybridODR_t;
+/*=========================================================================*/
+
+/*=========================================================================
+    OPTIONAL RANGE SETTINGS
+    -----------------------------------------------------------------------*/
+/*!
     Range settings for the accelerometer sensor.
 */
 typedef enum {
@@ -172,12 +191,16 @@ public:
   void setAccelRange(fxos8700AccelRange_t range);
   fxos8700AccelRange_t getAccelRange();
 
+  void setHybridODR(fxos8700HybridODR_t rate);
+  fxos8700HybridODR_t getHybridODR();
+
 protected:
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
 
 private:
   bool initialize();
   fxos8700AccelRange_t _range = ACCEL_RANGE_2G;
+  fxos8700HybridODR_t _rate = ODR_HYBRID_100HZ;
   int32_t _accelSensorID;
   int32_t _magSensorID;
 };
