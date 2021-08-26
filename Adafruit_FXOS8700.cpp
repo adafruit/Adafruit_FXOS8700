@@ -65,10 +65,13 @@ bool Adafruit_FXOS8700::initialize() {
   /* Set to standby mode (required to make changes to this register) */
   CTRL_REG1.write(0x00);
 
+  /* Set the full scale range of the sensor here during first standby. Default 2G */
+  XYZ_DATA_CFG.write(ACCEL_MG_LSB_2G);
+
   /* High resolution */
   CTRL_REG2.write(0x02);
-  /* Active, Normal Mode, Low Noise, 100Hz in Hybrid Mode */
-  CTRL_REG1.write(0x15);
+  /* Active, Normal Mode, Low Noise, Hybrid Mode rate setting as specified. Default 100Hz */
+  CTRL_REG1.write(ODR_HYBRID_100HZ);
 
   /* Configure the magnetometer */
   /* Hybrid Mode, Over Sampling Rate = 16 */
@@ -145,7 +148,7 @@ bool Adafruit_FXOS8700::begin(uint8_t addr, TwoWire *wire) {
   Adafruit_BusIO_Register WHO_AM_I(i2c_dev, FXOS8700_REGISTER_WHO_AM_I);
   if (WHO_AM_I.read() != FXOS8700_ID)
     return false;
-
+  
   return initialize();
 }
 
@@ -403,8 +406,11 @@ void Adafruit_FXOS8700::setAccelRange(fxos8700AccelRange_t range) {
   Adafruit_BusIO_Register XYZ_DATA_CFG(i2c_dev, FXOS8700_REGISTER_XYZ_DATA_CFG);
   Adafruit_BusIO_RegisterBits fs_bits(&XYZ_DATA_CFG, 2, 0);
 
+  uint8_t mask = (range << 2) - 1;
+  uint8_t rangeBits = range & mask;
+
   standby(true);
-  fs_bits.write(range);
+  fs_bits.write(rangeBits);
   standby(false);
 
   _range = range;
@@ -418,6 +424,36 @@ void Adafruit_FXOS8700::setAccelRange(fxos8700AccelRange_t range) {
 */
 /**************************************************************************/
 fxos8700AccelRange_t Adafruit_FXOS8700::getAccelRange() { return _range; }
+
+/**************************************************************************/
+/*!
+    @brief  Set the FXOS8700's Hybrid ODR.
+
+    @param rate the FXOS8700's Hybrid ODR.
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::setHybridODR(fxos8700HybridODR_t rate) {
+  Adafruit_BusIO_Register CTRL_REG1(i2c_dev, FXOS8700_REGISTER_CTRL_REG1);
+
+  // modified to maintain CTRL_REG1 in standby mode
+  uint8_t rateWithStdby = rate | (1 << 0);
+
+  standby(true);
+  CTRL_REG1.write(rateWithStdby);
+  standby(false);
+
+  _rate = rate;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Get the FXOS8700's Hybrid ODR.
+
+    @return The FXOS8700's Hybrid ODR.
+*/
+/**************************************************************************/
+fxos8700HybridODR_t Adafruit_FXOS8700::getHybridODR() { return _rate; }
+
 
 /**************************************************************************/
 /*!
