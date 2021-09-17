@@ -324,22 +324,21 @@ void Adafruit_FXOS8700::getSensor(sensor_t *accelSensor, sensor_t *magSensor) {
     non-standard .getEvent call with two parameters should
     generally be used with this sensor.
 
-    @param    accelEvent
+    @param    singleSensorEvent
               A reference to the sensors_event_t instances where the
-              accelerometer data should be written.
+              accelerometer or magnetometer data should be written.
 
     @return True if the event read was successful, otherwise false.
 */
 /**************************************************************************/
 bool Adafruit_FXOS8700::getEvent(sensors_event_t *singleSensorEvent) {
-  if (_mode == ACCEL_ONLY_MODE) {
-    sensors_event_t accel;
-    return getEvent(singleSensorEvent, &accel);
-  } else if (_mode == MAG_ONLY_MODE) {
-    sensors_event_t mag;
-    return getEvent(&mag, singleSensorEvent);
+  sensors_event_t dummy;
+  switch (_mode) {
+  case ACCEL_ONLY_MODE:
+    return getEvent(singleSensorEvent, &dummy);
+  case MAG_ONLY_MODE:
+    return getEvent(&dummy, singleSensorEvent);
   }
-  return false;
 }
 
 /**************************************************************************/
@@ -380,12 +379,12 @@ void Adafruit_FXOS8700::standby(boolean standby) {
   if (standby) {
     standby_bit.write(0);
     while (sysmode.read() != STANDBY) {
-      delay(100);
+      delay(10);
     }
   } else {
     standby_bit.write(1);
     while (sysmode.read() == STANDBY) {
-      delay(100);
+      delay(10);
     }
   }
 }
@@ -420,14 +419,9 @@ void Adafruit_FXOS8700::setSensorMode(fxos8700SensorMode_t mode) {
   Adafruit_BusIO_RegisterBits fs_bits_mreg1(&MCTRL_REG1, 2, 0);
   Adafruit_BusIO_RegisterBits fs_bit_mreg2(&MCTRL_REG2, 1, 5);
 
-  bool hyb_autoinc_mode = 0;
-  if (mode == HYBRID_MODE)
-    hyb_autoinc_mode = 1;
-
   standby(true);
   fs_bits_mreg1.write(mode);
-  if (mode == HYBRID_MODE)
-    fs_bit_mreg2.write(hyb_autoinc_mode);
+  fs_bit_mreg2.write(mode == HYBRID_MODE ? 1 : 0);
   standby(false);
 
   _mode = mode;
@@ -537,30 +531,9 @@ fxos8700ODR_t Adafruit_FXOS8700::getOutputDataRate() { return _rate; }
 
 /**************************************************************************/
 /*!
-    @brief  Gets the sensor_t data for the FXOS8700's magnetic sensor
-*/
-/**************************************************************************/
-void Adafruit_FXOS8700_Magnetometer::getSensor(sensor_t *sensor) {
-  /* Clear the sensor_t object */
-  memset(sensor, 0, sizeof(sensor_t));
-
-  /* Insert the sensor name in the fixed length char array */
-  strncpy(sensor->name, "FXOS8700_M", sizeof(sensor->name) - 1);
-  sensor->name[sizeof(sensor->name) - 1] = 0;
-  sensor->version = 1;
-  sensor->sensor_id = _sensorID;
-  sensor->type = SENSOR_TYPE_MAGNETIC_FIELD;
-  sensor->min_delay = 0;
-  sensor->min_value = -1200;
-  sensor->max_value = +1200;
-  sensor->resolution = 0;
-}
-
-/**************************************************************************/
-/*!
     @brief  Set the magnetometer oversampling ratio (OSR)
 
-    @param mode The magnetometer OSR to set.
+    @param ratio The magnetometer OSR to set.
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::setMagOversamplingRatio(fxos8700MagOSR_t ratio) {
@@ -582,6 +555,27 @@ void Adafruit_FXOS8700::setMagOversamplingRatio(fxos8700MagOSR_t ratio) {
 */
 /**************************************************************************/
 fxos8700MagOSR_t Adafruit_FXOS8700::getMagOversamplingRatio() { return _ratio; }
+
+/**************************************************************************/
+/*!
+    @brief  Gets the sensor_t data for the FXOS8700's magnetic sensor
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700_Magnetometer::getSensor(sensor_t *sensor) {
+  /* Clear the sensor_t object */
+  memset(sensor, 0, sizeof(sensor_t));
+
+  /* Insert the sensor name in the fixed length char array */
+  strncpy(sensor->name, "FXOS8700_M", sizeof(sensor->name) - 1);
+  sensor->name[sizeof(sensor->name) - 1] = 0;
+  sensor->version = 1;
+  sensor->sensor_id = _sensorID;
+  sensor->type = SENSOR_TYPE_MAGNETIC_FIELD;
+  sensor->min_delay = 0;
+  sensor->min_value = -1200;
+  sensor->max_value = +1200;
+  sensor->resolution = 0;
+}
 
 /**************************************************************************/
 /*!

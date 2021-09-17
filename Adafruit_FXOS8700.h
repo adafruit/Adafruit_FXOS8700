@@ -192,14 +192,14 @@ typedef enum {
     Range settings for the accelerometer sensor.
 */
 typedef enum {
-  MAG_OSR_0 = 0x00, /**< Mag oversampling ratio = 0 */
-  MAG_OSR_1 = 0x04, /**< Mag oversampling ratio = 1 */
-  MAG_OSR_2 = 0x08, /**< Mag oversampling ratio = 2 */
-  MAG_OSR_3 = 0x0C, /**< Mag oversampling ratio = 3 */
-  MAG_OSR_4 = 0x10, /**< Mag oversampling ratio = 4 */
-  MAG_OSR_5 = 0x14, /**< Mag oversampling ratio = 5 */
-  MAG_OSR_6 = 0x18, /**< Mag oversampling ratio = 6 */
-  MAG_OSR_7 = 0x1C, /**< Mag oversampling ratio = 7 */
+  MAG_OSR_0, /**< Mag oversampling ratio = 0 */
+  MAG_OSR_1, /**< Mag oversampling ratio = 1 */
+  MAG_OSR_2, /**< Mag oversampling ratio = 2 */
+  MAG_OSR_3, /**< Mag oversampling ratio = 3 */
+  MAG_OSR_4, /**< Mag oversampling ratio = 4 */
+  MAG_OSR_5, /**< Mag oversampling ratio = 5 */
+  MAG_OSR_6, /**< Mag oversampling ratio = 6 */
+  MAG_OSR_7, /**< Mag oversampling ratio = 7 */
 } fxos8700MagOSR_t;
 /*=========================================================================*/
 
