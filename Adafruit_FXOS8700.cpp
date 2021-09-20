@@ -338,6 +338,8 @@ bool Adafruit_FXOS8700::getEvent(sensors_event_t *singleSensorEvent) {
     return getEvent(singleSensorEvent, &dummy);
   case MAG_ONLY_MODE:
     return getEvent(&dummy, singleSensorEvent);
+  default:
+    return false;
   }
 }
 
