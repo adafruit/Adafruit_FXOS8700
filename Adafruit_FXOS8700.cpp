@@ -66,7 +66,7 @@ bool Adafruit_FXOS8700::initialize() {
 
   /* Low Noise & High accelerometer OSR resolution */
   standby(true);
-  lnoise_bit.write(0x04);
+  lnoise_bit.write(0x01);
   mods_bits.write(0x02);
   standby(false);
 
