@@ -58,23 +58,26 @@
 bool Adafruit_FXOS8700::initialize() {
   Adafruit_BusIO_Register CTRL_REG1(i2c_dev, FXOS8700_REGISTER_CTRL_REG1);
   Adafruit_BusIO_Register CTRL_REG2(i2c_dev, FXOS8700_REGISTER_CTRL_REG2);
-  Adafruit_BusIO_Register XYZ_DATA_CFG(i2c_dev, FXOS8700_REGISTER_XYZ_DATA_CFG);
-  Adafruit_BusIO_Register MCTRL_REG1(i2c_dev, FXOS8700_REGISTER_MCTRL_REG1);
-  Adafruit_BusIO_Register MCTRL_REG2(i2c_dev, FXOS8700_REGISTER_MCTRL_REG2);
+  Adafruit_BusIO_RegisterBits lnoise_bit(&CTRL_REG1, 1, 2);
+  Adafruit_BusIO_RegisterBits mods_bits(&CTRL_REG2, 2, 0);
 
-  /* Set to standby mode (required to make changes to this register) */
-  CTRL_REG1.write(0x00);
+  /* Set the full scale range of the accelerometer */
+  setAccelRange(ACCEL_RANGE_2G);
 
-  /* High resolution */
-  CTRL_REG2.write(0x02);
-  /* Active, Normal Mode, Low Noise, 100Hz in Hybrid Mode */
-  CTRL_REG1.write(0x15);
+  /* Low Noise & High accelerometer OSR resolution */
+  standby(true);
+  lnoise_bit.write(0x01);
+  mods_bits.write(0x02);
+  standby(false);
+
+  /* Set in hybrid mode, jumps to reg 0x33 after reading 0x06 */
+  setSensorMode(HYBRID_MODE);
+  /* Set the output data rate to 100Hz, default */
+  setOutputDataRate(ODR_100HZ);
 
   /* Configure the magnetometer */
-  /* Hybrid Mode, Over Sampling Rate = 16 */
-  MCTRL_REG1.write(0x1F);
-  /* Jump to reg 0x33 after reading 0x06 */
-  MCTRL_REG2.write(0x20);
+  /* Highest Over Sampling Ratio = 7 > (Over Sampling Rate = 16 @ 100Hz ODR)*/
+  setMagOversamplingRatio(MAG_OSR_7);
 
   /* Clear the raw sensor data */
   accel_raw.x = 0;
@@ -321,17 +324,23 @@ void Adafruit_FXOS8700::getSensor(sensor_t *accelSensor, sensor_t *magSensor) {
     non-standard .getEvent call with two parameters should
     generally be used with this sensor.
 
-    @param    accelEvent
+    @param    singleSensorEvent
               A reference to the sensors_event_t instances where the
-              accelerometer data should be written.
+              accelerometer or magnetometer data should be written.
 
     @return True if the event read was successful, otherwise false.
 */
 /**************************************************************************/
-bool Adafruit_FXOS8700::getEvent(sensors_event_t *accelEvent) {
-  sensors_event_t accel;
-
-  return getEvent(accelEvent, &accel);
+bool Adafruit_FXOS8700::getEvent(sensors_event_t *singleSensorEvent) {
+  sensors_event_t dummy;
+  switch (_mode) {
+  case ACCEL_ONLY_MODE:
+    return getEvent(singleSensorEvent, &dummy);
+  case MAG_ONLY_MODE:
+    return getEvent(&dummy, singleSensorEvent);
+  default:
+    return false;
+  }
 }
 
 /**************************************************************************/
@@ -365,13 +374,20 @@ void Adafruit_FXOS8700::getSensor(sensor_t *accelSensor) {
 /**************************************************************************/
 void Adafruit_FXOS8700::standby(boolean standby) {
   Adafruit_BusIO_Register CTRL_REG1(i2c_dev, FXOS8700_REGISTER_CTRL_REG1);
+  Adafruit_BusIO_Register SYS_MOD(i2c_dev, FXOS8600_REGISTER_SYSMOD);
   Adafruit_BusIO_RegisterBits standby_bit(&CTRL_REG1, 1, 0);
+  Adafruit_BusIO_RegisterBits sysmode(&SYS_MOD, 2, 0);
 
   if (standby) {
     standby_bit.write(0);
-    delay(100);
+    while (sysmode.read() != STANDBY) {
+      delay(10);
+    }
   } else {
     standby_bit.write(1);
+    while (sysmode.read() == STANDBY) {
+      delay(10);
+    }
   }
 }
 
@@ -394,17 +410,57 @@ Adafruit_Sensor *Adafruit_FXOS8700::getMagnetometerSensor(void) {
 
 /**************************************************************************/
 /*!
+    @brief  Set the sensor mode to hybrid, or accel/mag-only modes
+
+    @param mode The sensor mode to set.
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::setSensorMode(fxos8700SensorMode_t mode) {
+  Adafruit_BusIO_Register MCTRL_REG1(i2c_dev, FXOS8700_REGISTER_MCTRL_REG1);
+  Adafruit_BusIO_Register MCTRL_REG2(i2c_dev, FXOS8700_REGISTER_MCTRL_REG2);
+  Adafruit_BusIO_RegisterBits fs_bits_mreg1(&MCTRL_REG1, 2, 0);
+  Adafruit_BusIO_RegisterBits fs_bit_mreg2(&MCTRL_REG2, 1, 5);
+
+  standby(true);
+  fs_bits_mreg1.write(mode);
+  fs_bit_mreg2.write(mode == HYBRID_MODE ? 1 : 0);
+  standby(false);
+
+  _mode = mode;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Get the sensor mode (either hybrid, or accel/mag-only).
+
+    @return The sensor mode.
+*/
+/**************************************************************************/
+fxos8700SensorMode_t Adafruit_FXOS8700::getSensorMode() { return _mode; }
+
+/**************************************************************************/
+/*!
     @brief  Set the accelerometer full scale range.
+
+    @attention
+
+    This function resets the lnoise bit to low if a 8G accelerometer range
+    is requested. Otherwise, the active lnoise bit won't allow the sensor
+    to measure past 4G.
 
     @param range The accelerometer full scale range to set.
 */
 /**************************************************************************/
 void Adafruit_FXOS8700::setAccelRange(fxos8700AccelRange_t range) {
+  Adafruit_BusIO_Register CTRL_REG1(i2c_dev, FXOS8700_REGISTER_CTRL_REG1);
   Adafruit_BusIO_Register XYZ_DATA_CFG(i2c_dev, FXOS8700_REGISTER_XYZ_DATA_CFG);
+  Adafruit_BusIO_RegisterBits lnoise_bit(&CTRL_REG1, 1, 2);
   Adafruit_BusIO_RegisterBits fs_bits(&XYZ_DATA_CFG, 2, 0);
 
   standby(true);
   fs_bits.write(range);
+  if (range == ACCEL_RANGE_8G)
+    lnoise_bit.write(0x00);
   standby(false);
 
   _range = range;
@@ -418,6 +474,89 @@ void Adafruit_FXOS8700::setAccelRange(fxos8700AccelRange_t range) {
 */
 /**************************************************************************/
 fxos8700AccelRange_t Adafruit_FXOS8700::getAccelRange() { return _range; }
+
+/**************************************************************************/
+/*!
+    @brief  Set the FXOS8700's ODR from any sensor mode.
+
+    @param rate The FXOS8700's ODR.
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::setOutputDataRate(fxos8700ODR_t rate) {
+  Adafruit_BusIO_Register CTRL_REG1(i2c_dev, FXOS8700_REGISTER_CTRL_REG1);
+  Adafruit_BusIO_RegisterBits fs_bits(&CTRL_REG1, 3, 3);
+  bool isRateInMode = false;
+  uint8_t odr;
+
+  if (_mode == HYBRID_MODE) {
+    // test if rate param belongs in the available hybrid ODR mode options
+    for (int i = 0; i < 8; i++) {
+      if (rate == HYBRID_AVAILABLE_ODRs[i]) {
+        odr = ODR_drBits[i];
+        isRateInMode = true;
+        break;
+      }
+    }
+  } else {
+    // test if rate param belongs in the available accel/mag-only ODR mode
+    // options
+    for (int i = 0; i < 8; i++) {
+      if (rate == ACCEL_MAG_ONLY_AVAILABLE_ODRs[i]) {
+        odr = ODR_drBits[i];
+        isRateInMode = true;
+        break;
+      }
+    }
+  }
+
+  if (!isRateInMode) {
+    // requested rate can't be set in current sensor mode, so return
+    // existing rate without setting
+    return;
+  }
+
+  standby(true);
+  CTRL_REG1.write(odr);
+  standby(false);
+
+  _rate = rate;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Get the FXOS8700's Hybrid ODR.
+
+    @return The FXOS8700's Hybrid ODR.
+*/
+/**************************************************************************/
+fxos8700ODR_t Adafruit_FXOS8700::getOutputDataRate() { return _rate; }
+
+/**************************************************************************/
+/*!
+    @brief  Set the magnetometer oversampling ratio (OSR)
+
+    @param ratio The magnetometer OSR to set.
+*/
+/**************************************************************************/
+void Adafruit_FXOS8700::setMagOversamplingRatio(fxos8700MagOSR_t ratio) {
+  Adafruit_BusIO_Register MCTRL_REG1(i2c_dev, FXOS8700_REGISTER_MCTRL_REG1);
+  Adafruit_BusIO_RegisterBits fs_bits_mreg1(&MCTRL_REG1, 3, 2);
+
+  standby(true);
+  fs_bits_mreg1.write(ratio);
+  standby(false);
+
+  _ratio = ratio;
+}
+
+/**************************************************************************/
+/*!
+    @brief  Get the magnetometer oversampling ratio (OSR).
+
+    @return The magnetometer OSR.
+*/
+/**************************************************************************/
+fxos8700MagOSR_t Adafruit_FXOS8700::getMagOversamplingRatio() { return _ratio; }
 
 /**************************************************************************/
 /*!

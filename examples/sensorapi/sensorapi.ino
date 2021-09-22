@@ -77,6 +77,15 @@ void setup(void) {
   /* Set accelerometer range (optional, default is 2G) */
   // accelmag.setAccelRange(ACCEL_RANGE_8G);
 
+  /* Set the sensor mode (optional, default is hybrid mode) */
+  // accelmag.setSensorMode(ACCEL_ONLY_MODE);
+
+  /* Set the magnetometer's oversampling ratio (optional, default is 7) */
+  // accelmag.setMagOversamplingRatio(MAG_OSR_7);
+
+  /* Set the output data rate (optional, default is 100Hz) */
+  // accelmag.setOutputDataRate(ODR_400HZ);
+
   /* Display some basic information on this sensor */
   displaySensorDetails();
 }
