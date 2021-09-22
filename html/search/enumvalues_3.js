@@ -8,8 +8,5 @@ var searchData=
   ['mag_5fosr_5f4',['MAG_OSR_4',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a246d7c90fee78567d4496ad1ed890d99',1,'Adafruit_FXOS8700.h']]],
   ['mag_5fosr_5f5',['MAG_OSR_5',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a141b96d9d814ef0c9bf2f54246844f23',1,'Adafruit_FXOS8700.h']]],
   ['mag_5fosr_5f6',['MAG_OSR_6',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692aac06aaf8f4efbec305f93f383b6b80cf',1,'Adafruit_FXOS8700.h']]],
-  ['mag_5fosr_5f7',['MAG_OSR_7',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692ae08063445eafbd20667833348629c5ed',1,'Adafruit_FXOS8700.h']]],
-  ['mag_5fraw',['mag_raw',['../class_adafruit___f_x_o_s8700.html#a9f021ce4133fba72855116e8a918bb82',1,'Adafruit_FXOS8700']]],
-  ['mag_5fsensor',['mag_sensor',['../class_adafruit___f_x_o_s8700.html#a10e5b20b853eee33df300d38102d2a86',1,'Adafruit_FXOS8700']]],
-  ['mag_5fut_5flsb',['MAG_UT_LSB',['../_adafruit___f_x_o_s8700_8cpp.html#ad3068b95ff8087971d29e1d47d84066c',1,'Adafruit_FXOS8700.cpp']]]
+  ['mag_5fosr_5f7',['MAG_OSR_7',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692ae08063445eafbd20667833348629c5ed',1,'Adafruit_FXOS8700.h']]]
 ];

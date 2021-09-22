@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['fxos8600_5fregister_5fsysmod',['FXOS8600_REGISTER_SYSMOD',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa4384938dcad0070f5e189f5f6ac0ca67',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fid',['FXOS8700_ID',['../_adafruit___f_x_o_s8700_8h.html#ace9e70bad874c54219b86b8439461cae',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg1',['FXOS8700_REGISTER_CTRL_REG1',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa6f44bce283efb574435a277da634e47a',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg2',['FXOS8700_REGISTER_CTRL_REG2',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caacbc3cc4f72a749f4199dac78c6f3310b',1,'Adafruit_FXOS8700.h']]],
@@ -26,6 +27,10 @@ var searchData=
   ['fxos8700_5fregister_5fwho_5fam_5fi',['FXOS8700_REGISTER_WHO_AM_I',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caae18112735841ce560fd4c46e75fd1eba',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fxyz_5fdata_5fcfg',['FXOS8700_REGISTER_XYZ_DATA_CFG',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caad49ee516b876c98eedca68c8079dd0bb',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700accelrange_5ft',['fxos8700AccelRange_t',['../_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd',1,'Adafruit_FXOS8700.h']]],
+  ['fxos8700magosr_5ft',['fxos8700MagOSR_t',['../_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692',1,'Adafruit_FXOS8700.h']]],
+  ['fxos8700odr_5ft',['fxos8700ODR_t',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700rawdata_5ft',['fxos8700RawData_t',['../structfxos8700_raw_data__t.html',1,'']]],
-  ['fxos8700registers_5ft',['fxos8700Registers_t',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4ca',1,'Adafruit_FXOS8700.h']]]
+  ['fxos8700registers_5ft',['fxos8700Registers_t',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4ca',1,'Adafruit_FXOS8700.h']]],
+  ['fxos8700sensormode_5ft',['fxos8700SensorMode_t',['../_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81',1,'Adafruit_FXOS8700.h']]],
+  ['fxos8700systemstatus_5ft',['fxos8700SystemStatus_t',['../_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803b',1,'Adafruit_FXOS8700.h']]]
 ];

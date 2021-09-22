@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['fxos8600_5fregister_5fsysmod',['FXOS8600_REGISTER_SYSMOD',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa4384938dcad0070f5e189f5f6ac0ca67',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg1',['FXOS8700_REGISTER_CTRL_REG1',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa6f44bce283efb574435a277da634e47a',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg2',['FXOS8700_REGISTER_CTRL_REG2',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caacbc3cc4f72a749f4199dac78c6f3310b',1,'Adafruit_FXOS8700.h']]],
   ['fxos8700_5fregister_5fctrl_5freg3',['FXOS8700_REGISTER_CTRL_REG3',['../_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaa829fcd39ea228e44d4c63f8af73d709',1,'Adafruit_FXOS8700.h']]],

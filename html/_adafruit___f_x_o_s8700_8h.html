@@ -61,7 +61,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Adafruit_FXOS8700.h File Reference</div>  </div>
 </div><!--header-->
@@ -76,7 +77,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfxos8700_raw_data__t.html">fxos8700RawData_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw (integer) values from the gyroscope sensor.  <a href="structfxos8700_raw_data__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raw (integer) values from a 3dof sensor.  <a href="structfxos8700_raw_data__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700___accelerometer.html">Adafruit_FXOS8700_Accelerometer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,35 +103,86 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caab74b10e0592019490f8aaef1914ed280">FXOS8700_REGISTER_OUT_Y_LSB</a> = 0x04, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa3817ecd6662f327ddfe9b7391d4182d3">FXOS8700_REGISTER_OUT_Z_MSB</a> = 0x05, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caac67258a426d884572f09e1f52d24c265">FXOS8700_REGISTER_OUT_Z_LSB</a> = 0x06, 
-<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caae18112735841ce560fd4c46e75fd1eba">FXOS8700_REGISTER_WHO_AM_I</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa4384938dcad0070f5e189f5f6ac0ca67">FXOS8600_REGISTER_SYSMOD</a> = 0x0B, 
 <br />
-&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caad49ee516b876c98eedca68c8079dd0bb">FXOS8700_REGISTER_XYZ_DATA_CFG</a> = 0x0E, 
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caae18112735841ce560fd4c46e75fd1eba">FXOS8700_REGISTER_WHO_AM_I</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caad49ee516b876c98eedca68c8079dd0bb">FXOS8700_REGISTER_XYZ_DATA_CFG</a> = 0x0E, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa6f44bce283efb574435a277da634e47a">FXOS8700_REGISTER_CTRL_REG1</a>, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caacbc3cc4f72a749f4199dac78c6f3310b">FXOS8700_REGISTER_CTRL_REG2</a>, 
-<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaa829fcd39ea228e44d4c63f8af73d709">FXOS8700_REGISTER_CTRL_REG3</a>, 
 <br />
-&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa3c039511a6f172fc5498ea2ad4fab27a">FXOS8700_REGISTER_CTRL_REG4</a>, 
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaa829fcd39ea228e44d4c63f8af73d709">FXOS8700_REGISTER_CTRL_REG3</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa3c039511a6f172fc5498ea2ad4fab27a">FXOS8700_REGISTER_CTRL_REG4</a>, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa8992ac8485a14c508840402a7b86d1ea">FXOS8700_REGISTER_CTRL_REG5</a>, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caab69aa90bd040dc0a9d9978a4106b5c0f">FXOS8700_REGISTER_MSTATUS</a> = 0x32, 
-<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa7a36d87a961b13f00ef9150a392b0226">FXOS8700_REGISTER_MOUT_X_MSB</a> = 0x33, 
 <br />
-&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa85efc8424d4cb5ebbd47a511e5cee64c">FXOS8700_REGISTER_MOUT_X_LSB</a> = 0x34, 
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa7a36d87a961b13f00ef9150a392b0226">FXOS8700_REGISTER_MOUT_X_MSB</a> = 0x33, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa85efc8424d4cb5ebbd47a511e5cee64c">FXOS8700_REGISTER_MOUT_X_LSB</a> = 0x34, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caab17726d3d484b5d644afd73dfc5cf473">FXOS8700_REGISTER_MOUT_Y_MSB</a> = 0x35, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa7b2ac7307026471a3dca567b48f141f7">FXOS8700_REGISTER_MOUT_Y_LSB</a> = 0x36, 
-<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caac03f7919fb145dbb92610827ea34bf2d">FXOS8700_REGISTER_MOUT_Z_MSB</a> = 0x37, 
 <br />
-&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaf636a3a1a3f007363b8b89df0947fae2">FXOS8700_REGISTER_MOUT_Z_LSB</a> = 0x38, 
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caac03f7919fb145dbb92610827ea34bf2d">FXOS8700_REGISTER_MOUT_Z_MSB</a> = 0x37, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaf636a3a1a3f007363b8b89df0947fae2">FXOS8700_REGISTER_MOUT_Z_LSB</a> = 0x38, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caae0b87aba9453a83a6613356118d030e1">FXOS8700_REGISTER_MCTRL_REG1</a>, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caaec97c4735cb90643d17c39fdb90bf64a">FXOS8700_REGISTER_MCTRL_REG2</a>, 
-<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa5f9064fee58a9b585b6fa8784066ccbc">FXOS8700_REGISTER_MCTRL_REG3</a>
+<br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae562662874556795df01d7f6d3e4a4caa5f9064fee58a9b585b6fa8784066ccbc">FXOS8700_REGISTER_MCTRL_REG3</a>
 <br />
  }</td></tr>
 <tr class="separator:ae562662874556795df01d7f6d3e4a4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b4b6192311139058e938effa847803b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803b">fxos8700SystemStatus_t</a> { <a class="el" href="_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803bae4634ae4352b512b38c5da9dc1610ca6">STANDBY</a> = 0x00, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803ba669539d1110f789cf3e282be447c3e77">WAKE</a> = 0x01, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803bad6137abebe4fdc59e2f0f2c84bdbe3fa">SLEEP</a> = 0x02
+ }</td></tr>
+<tr class="separator:a5b4b6192311139058e938effa847803b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9abc0bd5a33a547953e4302831fe81"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a> { <a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81ad244375a63692c7fd1acaa0d7dc30b7d">ACCEL_ONLY_MODE</a> = 0b00, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81a59280b7ddb1052e2a434b022738bb70e">MAG_ONLY_MODE</a> = 0b01, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81abe4f5c2248e44cb895ca35cd0b1e8efb">HYBRID_MODE</a> = 0b11
+ }</td></tr>
+<tr class="separator:a7e9abc0bd5a33a547953e4302831fe81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd62a4ece4a3063b67e64782bf6c679c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a> { <br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c">ODR_800HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af">ODR_400HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518">ODR_200HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f">ODR_100HZ</a>, 
+<br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762">ODR_50HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cac4c9d1b3d7e247a0b78fb002aef36a13">ODR_25HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cacd414fa4bc09ac75370aff878f6be8e0">ODR_12_5HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c">ODR_6_25HZ</a>, 
+<br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca623c43584eb63dc604e744fb9ce6a1f4">ODR_3_125HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca936c69b27cc0ba129a443987e99fc975">ODR_1_5625HZ</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca11e2d435dba0e79d9c02e2c89b7c1140">ODR_0_7813HZ</a>
+<br />
+ }</td></tr>
+<tr class="separator:abd62a4ece4a3063b67e64782bf6c679c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9867f213d867678b2c737d6fbb5fcbd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd">fxos8700AccelRange_t</a> { <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda96c51ec3ab7172ca52adc2e52a6e304c">ACCEL_RANGE_2G</a> = 0x00, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda7e55d41dacd4ae59c936bb4ff86d8dbd">ACCEL_RANGE_4G</a> = 0x01, 
 <a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbda0a657d8a8f3161e900f5d3812020c0a3">ACCEL_RANGE_8G</a> = 0x02
  }</td></tr>
 <tr class="separator:ac9867f213d867678b2c737d6fbb5fcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d2f7aba0eb496ed2960ba1a377f9692"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a> { <br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a7e0c27dcb4e2fb4164fc54d4c7270201">MAG_OSR_0</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a516d6262235e9c8ec30853d813dd536c">MAG_OSR_1</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a68a784a0ca89cf6d2535b1517706ca25">MAG_OSR_2</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692af5c7a1e4c0dfead2506340b99bcb6534">MAG_OSR_3</a>, 
+<br />
+&#160;&#160;<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a246d7c90fee78567d4496ad1ed890d99">MAG_OSR_4</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692a141b96d9d814ef0c9bf2f54246844f23">MAG_OSR_5</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692aac06aaf8f4efbec305f93f383b6b80cf">MAG_OSR_6</a>, 
+<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692ae08063445eafbd20667833348629c5ed">MAG_OSR_7</a>
+<br />
+ }</td></tr>
+<tr class="separator:a7d2f7aba0eb496ed2960ba1a377f9692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1d4b4135c549470e5646c39b4bf067e0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a1d4b4135c549470e5646c39b4bf067e0">ACCEL_MAG_ONLY_AVAILABLE_ODRs</a> []</td></tr>
+<tr class="separator:a1d4b4135c549470e5646c39b4bf067e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add80e87059d0ac7c72a2c225182cbd4f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#add80e87059d0ac7c72a2c225182cbd4f">HYBRID_AVAILABLE_ODRs</a> []</td></tr>
+<tr class="separator:add80e87059d0ac7c72a2c225182cbd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a048ba2e116e1a0273756de4ecf0bc"><td class="memItemLeft" align="right" valign="top">const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#ae9a048ba2e116e1a0273756de4ecf0bc">ODR_drBits</a> []</td></tr>
+<tr class="separator:ae9a048ba2e116e1a0273756de4ecf0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is part of Adafruit's FXOS8700 driver for the Arduino platform. It is designed specifically to work with the Adafruit FXOS8700 breakout: <a href="https://www.adafruit.com/products/3463">https://www.adafruit.com/products/3463</a></p>
@@ -182,6 +234,8 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ae562662874556795df01d7f6d3e4a4caac67258a426d884572f09e1f52d24c265"></a>FXOS8700_REGISTER_OUT_Z_LSB&#160;</td><td class="fielddoc"><p>0x06 </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ae562662874556795df01d7f6d3e4a4caa4384938dcad0070f5e189f5f6ac0ca67"></a>FXOS8600_REGISTER_SYSMOD&#160;</td><td class="fielddoc"><p>0x0B </p>
+</td></tr>
 <tr><td class="fieldname"><a id="ae562662874556795df01d7f6d3e4a4caae18112735841ce560fd4c46e75fd1eba"></a>FXOS8700_REGISTER_WHO_AM_I&#160;</td><td class="fielddoc"><p>0x0D (default value = 0b11000111, read only) </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae562662874556795df01d7f6d3e4a4caad49ee516b876c98eedca68c8079dd0bb"></a>FXOS8700_REGISTER_XYZ_DATA_CFG&#160;</td><td class="fielddoc"><p>0x0E </p>
@@ -220,6 +274,91 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a id="a5b4b6192311139058e938effa847803b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4b6192311139058e938effa847803b">&#9670;&nbsp;</a></span>fxos8700SystemStatus_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_adafruit___f_x_o_s8700_8h.html#a5b4b6192311139058e938effa847803b">fxos8700SystemStatus_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>System status for the overall FXOS8700 sensor. Gets the current mode as the 2bit sysmod[1:0] setting to ensure proper mode configuration </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5b4b6192311139058e938effa847803bae4634ae4352b512b38c5da9dc1610ca6"></a>STANDBY&#160;</td><td class="fielddoc"><p>sysmod[1:0]. Standby status </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b4b6192311139058e938effa847803ba669539d1110f789cf3e282be447c3e77"></a>WAKE&#160;</td><td class="fielddoc"><p>sysmod[1:0]. Wake status </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a5b4b6192311139058e938effa847803bad6137abebe4fdc59e2f0f2c84bdbe3fa"></a>SLEEP&#160;</td><td class="fielddoc"><p>sysmod[1:0]. Sleep status </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a7e9abc0bd5a33a547953e4302831fe81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e9abc0bd5a33a547953e4302831fe81">&#9670;&nbsp;</a></span>fxos8700SensorMode_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sensor mode seetings for the overall FXOS8700 sensor. Sets the sensor in accelerometer-only, magnerometer-only, or hybrid modes. Sent to FXOS8700_REGISTER_MCTRL_REG1 </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7e9abc0bd5a33a547953e4302831fe81ad244375a63692c7fd1acaa0d7dc30b7d"></a>ACCEL_ONLY_MODE&#160;</td><td class="fielddoc"><p>m_hms[1:0] = 0b00. Accel-only mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7e9abc0bd5a33a547953e4302831fe81a59280b7ddb1052e2a434b022738bb70e"></a>MAG_ONLY_MODE&#160;</td><td class="fielddoc"><p>m_hms[1:0] = 0b01. Mag-only mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7e9abc0bd5a33a547953e4302831fe81abe4f5c2248e44cb895ca35cd0b1e8efb"></a>HYBRID_MODE&#160;</td><td class="fielddoc"><p>m_hms[1:0] = 0b11. Hybrid mode </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="abd62a4ece4a3063b67e64782bf6c679c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd62a4ece4a3063b67e64782bf6c679c">&#9670;&nbsp;</a></span>fxos8700ODR_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Output Data Rate (ODR) key for the overall FXOS8700 sensor. Called by user for convenient variable name matching </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c"></a>ODR_800HZ&#160;</td><td class="fielddoc"><p>800Hz, only available in accel/mag-only modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af"></a>ODR_400HZ&#160;</td><td class="fielddoc"><p>400Hz, available in all modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518"></a>ODR_200HZ&#160;</td><td class="fielddoc"><p>200Hz, available in all modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f"></a>ODR_100HZ&#160;</td><td class="fielddoc"><p>100Hz, available in all modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762"></a>ODR_50HZ&#160;</td><td class="fielddoc"><p>50Hz, available in all modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679cac4c9d1b3d7e247a0b78fb002aef36a13"></a>ODR_25HZ&#160;</td><td class="fielddoc"><p>25Hz, only available in hybrid mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679cacd414fa4bc09ac75370aff878f6be8e0"></a>ODR_12_5HZ&#160;</td><td class="fielddoc"><p>12.5Hz, only available in accel/mag-only modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c"></a>ODR_6_25HZ&#160;</td><td class="fielddoc"><p>6.25Hz, available in all modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca623c43584eb63dc604e744fb9ce6a1f4"></a>ODR_3_125HZ&#160;</td><td class="fielddoc"><p>3.125Hz, only available in hybrid mode </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca936c69b27cc0ba129a443987e99fc975"></a>ODR_1_5625HZ&#160;</td><td class="fielddoc"><p>3.125Hz, only available in accel/mag-only modes </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abd62a4ece4a3063b67e64782bf6c679ca11e2d435dba0e79d9c02e2c89b7c1140"></a>ODR_0_7813HZ&#160;</td><td class="fielddoc"><p>0.7813Hz, only available in hybrid mode </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="ac9867f213d867678b2c737d6fbb5fcbd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9867f213d867678b2c737d6fbb5fcbd">&#9670;&nbsp;</a></span>fxos8700AccelRange_t</h2>
 
@@ -240,6 +379,101 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ac9867f213d867678b2c737d6fbb5fcbda0a657d8a8f3161e900f5d3812020c0a3"></a>ACCEL_RANGE_8G&#160;</td><td class="fielddoc"><p>+/- 8g range </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<a id="a7d2f7aba0eb496ed2960ba1a377f9692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d2f7aba0eb496ed2960ba1a377f9692">&#9670;&nbsp;</a></span>fxos8700MagOSR_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Range settings for the accelerometer sensor. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692a7e0c27dcb4e2fb4164fc54d4c7270201"></a>MAG_OSR_0&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 0 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692a516d6262235e9c8ec30853d813dd536c"></a>MAG_OSR_1&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692a68a784a0ca89cf6d2535b1517706ca25"></a>MAG_OSR_2&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692af5c7a1e4c0dfead2506340b99bcb6534"></a>MAG_OSR_3&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 3 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692a246d7c90fee78567d4496ad1ed890d99"></a>MAG_OSR_4&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 4 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692a141b96d9d814ef0c9bf2f54246844f23"></a>MAG_OSR_5&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 5 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692aac06aaf8f4efbec305f93f383b6b80cf"></a>MAG_OSR_6&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 6 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7d2f7aba0eb496ed2960ba1a377f9692ae08063445eafbd20667833348629c5ed"></a>MAG_OSR_7&#160;</td><td class="fielddoc"><p>Mag oversampling ratio = 7 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a1d4b4135c549470e5646c39b4bf067e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4b4135c549470e5646c39b4bf067e0">&#9670;&nbsp;</a></span>ACCEL_MAG_ONLY_AVAILABLE_ODRs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a> ACCEL_MAG_ONLY_AVAILABLE_ODRs[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c">ODR_800HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af">ODR_400HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518">ODR_200HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f">ODR_100HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762">ODR_50HZ</a>,     </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cacd414fa4bc09ac75370aff878f6be8e0">ODR_12_5HZ</a>,   </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c">ODR_6_25HZ</a>,   </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca936c69b27cc0ba129a443987e99fc975">ODR_1_5625HZ</a>, </div><div class="line">}</div><div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f">ODR_100HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:118</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca936c69b27cc0ba129a443987e99fc975"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca936c69b27cc0ba129a443987e99fc975">ODR_1_5625HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:124</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518">ODR_200HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:117</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762">ODR_50HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:119</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679cacd414fa4bc09ac75370aff878f6be8e0"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cacd414fa4bc09ac75370aff878f6be8e0">ODR_12_5HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:121</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c">ODR_800HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:115</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c">ODR_6_25HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:122</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af">ODR_400HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:116</div></div>
+</div><!-- fragment --><p>Output Data Rates (ODRs) available for accel/mag-only modes, type array of user set fxos8700ODR_t </p>
+
+</div>
+</div>
+<a id="add80e87059d0ac7c72a2c225182cbd4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add80e87059d0ac7c72a2c225182cbd4f">&#9670;&nbsp;</a></span>HYBRID_AVAILABLE_ODRs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a> HYBRID_AVAILABLE_ODRs[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af">ODR_400HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518">ODR_200HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f">ODR_100HZ</a>,    </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762">ODR_50HZ</a>,     </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cac4c9d1b3d7e247a0b78fb002aef36a13">ODR_25HZ</a>,     </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c">ODR_6_25HZ</a>,   </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca623c43584eb63dc604e744fb9ce6a1f4">ODR_3_125HZ</a>,  </div><div class="line">    <a class="code" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca11e2d435dba0e79d9c02e2c89b7c1140">ODR_0_7813HZ</a>, </div><div class="line">}</div><div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1fe32009f46ea5bc04dadf3bc4129e5f">ODR_100HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:118</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca623c43584eb63dc604e744fb9ce6a1f4"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca623c43584eb63dc604e744fb9ce6a1f4">ODR_3_125HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:123</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca73bf59ea334fccfb83700d3e6312a518">ODR_200HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:117</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca11e2d435dba0e79d9c02e2c89b7c1140"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca11e2d435dba0e79d9c02e2c89b7c1140">ODR_0_7813HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:125</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762">ODR_50HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:119</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c">ODR_6_25HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:122</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679cac4c9d1b3d7e247a0b78fb002aef36a13"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679cac4c9d1b3d7e247a0b78fb002aef36a13">ODR_25HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:120</div></div>
+<div class="ttc" id="_adafruit___f_x_o_s8700_8h_html_abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af"><div class="ttname"><a href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af">ODR_400HZ</a></div><div class="ttdef"><b>Definition:</b> Adafruit_FXOS8700.h:116</div></div>
+</div><!-- fragment --><p>Output Data Rates (ODRs) available for hybrid mode, type array of user set fxos8700ODR_t </p>
+
+</div>
+</div>
+<a id="ae9a048ba2e116e1a0273756de4ecf0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a048ba2e116e1a0273756de4ecf0bc">&#9670;&nbsp;</a></span>ODR_drBits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint16_t ODR_drBits[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    0x00, </div><div class="line">    0x08, </div><div class="line">    0x10, </div><div class="line">    0x18, </div><div class="line">    0x20, </div><div class="line">    0x28, </div><div class="line">    0x30, </div><div class="line">    0x38, </div><div class="line">}</div></div><!-- fragment --><p>Output Data Rate (ODR) settings to write to the dr[2:0] bits in CTRL_REG_1, array type to pass the index from available accel/mag-only and hyrbrid modes </p>
 
 </div>
 </div>

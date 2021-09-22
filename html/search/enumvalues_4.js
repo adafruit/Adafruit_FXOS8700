@@ -10,6 +10,5 @@ var searchData=
   ['odr_5f400hz',['ODR_400HZ',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1a39fca1652b4497dd61f02ce08185af',1,'Adafruit_FXOS8700.h']]],
   ['odr_5f50hz',['ODR_50HZ',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca251e785e965dc2d33a98f1e3520c1762',1,'Adafruit_FXOS8700.h']]],
   ['odr_5f6_5f25hz',['ODR_6_25HZ',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca2d9749bbd2a5314d82497cc243156f1c',1,'Adafruit_FXOS8700.h']]],
-  ['odr_5f800hz',['ODR_800HZ',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c',1,'Adafruit_FXOS8700.h']]],
-  ['odr_5fdrbits',['ODR_drBits',['../_adafruit___f_x_o_s8700_8h.html#ae9a048ba2e116e1a0273756de4ecf0bc',1,'Adafruit_FXOS8700.h']]]
+  ['odr_5f800hz',['ODR_800HZ',['../_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679ca1ab01a81fe3dab4afa54c50bf55bc22c',1,'Adafruit_FXOS8700.h']]]
 ];

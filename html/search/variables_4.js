@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../structfxos8700_raw_data__t.html#a1a5c840c1a6e42725bfcfc006c4aea81',1,'fxos8700RawData_t']]]
+  ['odr_5fdrbits',['ODR_drBits',['../_adafruit___f_x_o_s8700_8h.html#ae9a048ba2e116e1a0273756de4ecf0bc',1,'Adafruit_FXOS8700.h']]]
 ];

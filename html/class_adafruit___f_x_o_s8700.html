@@ -92,9 +92,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4c6b0a262ea754411282ed248e232f35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a4c6b0a262ea754411282ed248e232f35">getEvent</a> (sensors_event_t *accel)</td></tr>
 <tr class="memdesc:a4c6b0a262ea754411282ed248e232f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a single sensor event from the accelerometer.  <a href="#a4c6b0a262ea754411282ed248e232f35">More...</a><br /></td></tr>
 <tr class="separator:a4c6b0a262ea754411282ed248e232f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe98037804e4c8782e3e9704e28775b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#abe98037804e4c8782e3e9704e28775b6">getSensor</a> (sensor_t *accel)</td></tr>
-<tr class="memdesc:abe98037804e4c8782e3e9704e28775b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets sensor details about the accelerometer.  <a href="#abe98037804e4c8782e3e9704e28775b6">More...</a><br /></td></tr>
-<tr class="separator:abe98037804e4c8782e3e9704e28775b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c1595ee64895bdfefe65abb7f09096"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#ae7c1595ee64895bdfefe65abb7f09096">getSensor</a> (sensor_t *singleSensorEvent)</td></tr>
+<tr class="memdesc:ae7c1595ee64895bdfefe65abb7f09096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets sensor details about the accelerometer.  <a href="#ae7c1595ee64895bdfefe65abb7f09096">More...</a><br /></td></tr>
+<tr class="separator:ae7c1595ee64895bdfefe65abb7f09096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e2d0bcf58cf2022513a61107f8e2afd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a9e2d0bcf58cf2022513a61107f8e2afd">getEvent</a> (sensors_event_t *accel, sensors_event_t *mag)</td></tr>
 <tr class="memdesc:a9e2d0bcf58cf2022513a61107f8e2afd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the most recent sensor events.  <a href="#a9e2d0bcf58cf2022513a61107f8e2afd">More...</a><br /></td></tr>
 <tr class="separator:a9e2d0bcf58cf2022513a61107f8e2afd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,12 +110,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a015459a967863793d981459b8f7aee7d"><td class="memItemLeft" align="right" valign="top">Adafruit_Sensor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a015459a967863793d981459b8f7aee7d">getAccelerometerSensor</a> (void)</td></tr>
 <tr class="memdesc:a015459a967863793d981459b8f7aee7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an Adafruit Unified Sensor object for the accelerometer sensor component.  <a href="#a015459a967863793d981459b8f7aee7d">More...</a><br /></td></tr>
 <tr class="separator:a015459a967863793d981459b8f7aee7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad244970cab91f7c4a43179a719974aca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#ad244970cab91f7c4a43179a719974aca">setSensorMode</a> (<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a> mode)</td></tr>
+<tr class="memdesc:ad244970cab91f7c4a43179a719974aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sensor mode to hybrid, or accel/mag-only modes.  <a href="#ad244970cab91f7c4a43179a719974aca">More...</a><br /></td></tr>
+<tr class="separator:ad244970cab91f7c4a43179a719974aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6851a4284c0837dcd3f40e92a0f934bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a6851a4284c0837dcd3f40e92a0f934bd">getSensorMode</a> ()</td></tr>
+<tr class="memdesc:a6851a4284c0837dcd3f40e92a0f934bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the sensor mode (either hybrid, or accel/mag-only).  <a href="#a6851a4284c0837dcd3f40e92a0f934bd">More...</a><br /></td></tr>
+<tr class="separator:a6851a4284c0837dcd3f40e92a0f934bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0d047ab7776e6f15c895e26ab2fc60f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#aa0d047ab7776e6f15c895e26ab2fc60f">setAccelRange</a> (<a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd">fxos8700AccelRange_t</a> range)</td></tr>
 <tr class="memdesc:aa0d047ab7776e6f15c895e26ab2fc60f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the accelerometer full scale range.  <a href="#aa0d047ab7776e6f15c895e26ab2fc60f">More...</a><br /></td></tr>
 <tr class="separator:aa0d047ab7776e6f15c895e26ab2fc60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20b1626417ebbc73d847aa0a3cf9fc08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#ac9867f213d867678b2c737d6fbb5fcbd">fxos8700AccelRange_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a20b1626417ebbc73d847aa0a3cf9fc08">getAccelRange</a> ()</td></tr>
 <tr class="memdesc:a20b1626417ebbc73d847aa0a3cf9fc08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the accelerometer full scale range.  <a href="#a20b1626417ebbc73d847aa0a3cf9fc08">More...</a><br /></td></tr>
 <tr class="separator:a20b1626417ebbc73d847aa0a3cf9fc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebd54d3c8524337c0d8bd0a3e7d241b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#aebd54d3c8524337c0d8bd0a3e7d241b1">setOutputDataRate</a> (<a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a> rate)</td></tr>
+<tr class="memdesc:aebd54d3c8524337c0d8bd0a3e7d241b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FXOS8700's ODR from any sensor mode.  <a href="#aebd54d3c8524337c0d8bd0a3e7d241b1">More...</a><br /></td></tr>
+<tr class="separator:aebd54d3c8524337c0d8bd0a3e7d241b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d5712f91dea11fe3fb3124f1a919f6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a4d5712f91dea11fe3fb3124f1a919f6f">getOutputDataRate</a> ()</td></tr>
+<tr class="memdesc:a4d5712f91dea11fe3fb3124f1a919f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FXOS8700's Hybrid ODR.  <a href="#a4d5712f91dea11fe3fb3124f1a919f6f">More...</a><br /></td></tr>
+<tr class="separator:a4d5712f91dea11fe3fb3124f1a919f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ede4539197f147a2a8bfd4ea1b3cdcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a7ede4539197f147a2a8bfd4ea1b3cdcf">setMagOversamplingRatio</a> (<a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a> ratio)</td></tr>
+<tr class="memdesc:a7ede4539197f147a2a8bfd4ea1b3cdcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the magnetometer oversampling ratio (OSR)  <a href="#a7ede4539197f147a2a8bfd4ea1b3cdcf">More...</a><br /></td></tr>
+<tr class="separator:a7ede4539197f147a2a8bfd4ea1b3cdcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a372aa29c45b1342210dfe0edbedd4e0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___f_x_o_s8700.html#a372aa29c45b1342210dfe0edbedd4e0d">getMagOversamplingRatio</a> ()</td></tr>
+<tr class="memdesc:a372aa29c45b1342210dfe0edbedd4e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the magnetometer oversampling ratio (OSR).  <a href="#a372aa29c45b1342210dfe0edbedd4e0d">More...</a><br /></td></tr>
+<tr class="separator:a372aa29c45b1342210dfe0edbedd4e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -227,7 +245,7 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
           <td class="memname">bool Adafruit_FXOS8700::getEvent </td>
           <td>(</td>
           <td class="paramtype">sensors_event_t *&#160;</td>
-          <td class="paramname"><em>accelEvent</em></td><td>)</td>
+          <td class="paramname"><em>singleSensorEvent</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -238,7 +256,7 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
 <p>This function exists to keep Adafruit_Sensor happy since we need a single sensor in the canonical .getEvent call. The non-standard .getEvent call with two parameters should generally be used with this sensor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">accelEvent</td><td>A reference to the sensors_event_t instances where the accelerometer data should be written.</td></tr>
+    <tr><td class="paramname">singleSensorEvent</td><td>A reference to the sensors_event_t instances where the accelerometer or magnetometer data should be written.</td></tr>
   </table>
   </dd>
 </dl>
@@ -246,8 +264,8 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a id="abe98037804e4c8782e3e9704e28775b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe98037804e4c8782e3e9704e28775b6">&#9670;&nbsp;</a></span>getSensor() <span class="overload">[1/2]</span></h2>
+<a id="ae7c1595ee64895bdfefe65abb7f09096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c1595ee64895bdfefe65abb7f09096">&#9670;&nbsp;</a></span>getSensor() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,6 +436,52 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
+<a id="ad244970cab91f7c4a43179a719974aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad244970cab91f7c4a43179a719974aca">&#9670;&nbsp;</a></span>setSensorMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_FXOS8700::setSensorMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the sensor mode to hybrid, or accel/mag-only modes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>The sensor mode to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6851a4284c0837dcd3f40e92a0f934bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6851a4284c0837dcd3f40e92a0f934bd">&#9670;&nbsp;</a></span>getSensorMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7e9abc0bd5a33a547953e4302831fe81">fxos8700SensorMode_t</a> Adafruit_FXOS8700::getSensorMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the sensor mode (either hybrid, or accel/mag-only). </p>
+<dl class="section return"><dt>Returns</dt><dd>The sensor mode. </dd></dl>
+
+</div>
+</div>
 <a id="aa0d047ab7776e6f15c895e26ab2fc60f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0d047ab7776e6f15c895e26ab2fc60f">&#9670;&nbsp;</a></span>setAccelRange()</h2>
 
@@ -435,6 +499,8 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 
 <p>Set the accelerometer full scale range. </p>
+<dl class="section attention"><dt>Attention</dt><dd></dd></dl>
+<p>This function resets the lnoise bit to low if a 8G accelerometer range is requested. Otherwise, the active lnoise bit won't allow the sensor to measure past 4G.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">range</td><td>The accelerometer full scale range to set. </td></tr>
@@ -461,6 +527,98 @@ Adafruit_I2CDevice *&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 <p>Get the accelerometer full scale range. </p>
 <dl class="section return"><dt>Returns</dt><dd>The accelerometer full scale range. </dd></dl>
+
+</div>
+</div>
+<a id="aebd54d3c8524337c0d8bd0a3e7d241b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd54d3c8524337c0d8bd0a3e7d241b1">&#9670;&nbsp;</a></span>setOutputDataRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_FXOS8700::setOutputDataRate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a>&#160;</td>
+          <td class="paramname"><em>rate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the FXOS8700's ODR from any sensor mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rate</td><td>The FXOS8700's ODR. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4d5712f91dea11fe3fb3124f1a919f6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d5712f91dea11fe3fb3124f1a919f6f">&#9670;&nbsp;</a></span>getOutputDataRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#abd62a4ece4a3063b67e64782bf6c679c">fxos8700ODR_t</a> Adafruit_FXOS8700::getOutputDataRate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the FXOS8700's Hybrid ODR. </p>
+<dl class="section return"><dt>Returns</dt><dd>The FXOS8700's Hybrid ODR. </dd></dl>
+
+</div>
+</div>
+<a id="a7ede4539197f147a2a8bfd4ea1b3cdcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ede4539197f147a2a8bfd4ea1b3cdcf">&#9670;&nbsp;</a></span>setMagOversamplingRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_FXOS8700::setMagOversamplingRatio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a>&#160;</td>
+          <td class="paramname"><em>ratio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the magnetometer oversampling ratio (OSR) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>The magnetometer OSR to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a372aa29c45b1342210dfe0edbedd4e0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a372aa29c45b1342210dfe0edbedd4e0d">&#9670;&nbsp;</a></span>getMagOversamplingRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_adafruit___f_x_o_s8700_8h.html#a7d2f7aba0eb496ed2960ba1a377f9692">fxos8700MagOSR_t</a> Adafruit_FXOS8700::getMagOversamplingRatio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the magnetometer oversampling ratio (OSR). </p>
+<dl class="section return"><dt>Returns</dt><dd>The magnetometer OSR. </dd></dl>
 
 </div>
 </div>
